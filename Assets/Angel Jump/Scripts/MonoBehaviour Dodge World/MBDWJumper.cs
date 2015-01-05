@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Sprites;
 using System;
 using System.Collections;
 
@@ -12,7 +13,7 @@ public class MBDWJumper : MBDW_BaseJumper {
 	
 	float velY = 0;
 
-	bool isLookingLeft = true;
+	bool isLookingRight = true;
 
 	bool canMoveLeft = true;
 	bool canMoveRight = true;
@@ -63,11 +64,19 @@ public class MBDWJumper : MBDW_BaseJumper {
 				if(horizontalAxis > 0) {
 					horizontalAxis = 0;}
 				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+
+				if(isLookingRight) {
+					FlipLookDirection();
+				} 
 			}
 			if(Input.GetKey(KeyCode.RightArrow) && canMoveRight) { 
 				if(horizontalAxis < 0) {
 					horizontalAxis = 0;}
 				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+
+				if(!isLookingRight) {
+					FlipLookDirection();
+				}
 			}
 		}
 		
@@ -81,6 +90,14 @@ public class MBDWJumper : MBDW_BaseJumper {
 		if(other.tag == ConstantTags.GROUND) {
 			SwitchToJumperState(JuStJump.Instance);
 		}
+	}
+
+	void FlipLookDirection() {
+		isLookingRight = !isLookingRight;
+
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 
 	// ========================
@@ -123,6 +140,11 @@ public class MBDWJumper : MBDW_BaseJumper {
 
 		public Handler(MBDWJumper jumper) {
 			this.jumper = jumper;
+		}
+
+		public void SetSprite(Sprite newSprite) {
+			SpriteRenderer spriteRenderer = jumper.GetComponent<SpriteRenderer>();
+			spriteRenderer.sprite = newSprite;
 		}
 
 		public float getVelY() { return jumper.velY; }

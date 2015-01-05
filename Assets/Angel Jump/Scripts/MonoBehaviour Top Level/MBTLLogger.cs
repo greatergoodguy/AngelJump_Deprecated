@@ -5,7 +5,7 @@ public class MBTLLogger : MBTL_Base {
 
 	private static readonly string TAG = typeof(MBTLLogger).Name;
 
-	public bool logMasterScript 	= true;
+	public bool logMasterScript 	= false;
 	public bool logJumper 			= false;
 
 	bool logMasterScriptClone;

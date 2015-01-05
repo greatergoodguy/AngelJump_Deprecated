@@ -3,13 +3,19 @@ using System.Collections;
 
 public class JuStFall : JuSt_Base {
 
+	Sprite spriteFall;
+
 	MBDWJumper.Handler handler;
 
-	private JuStFall() {}
+	private JuStFall() {
+		spriteFall = Resources.Load<Sprite>("Angel Fall");
+	}
 
 	public override void Enter (MBDWJumper.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
+
+		handler.SetSprite(spriteFall);
 	}
 
 	public override void Exit () {

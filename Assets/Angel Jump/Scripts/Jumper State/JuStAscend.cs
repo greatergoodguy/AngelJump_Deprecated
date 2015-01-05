@@ -2,17 +2,23 @@
 using System.Collections;
 
 public class JuStAscend : JuSt_Base {
-	
-	MBDWJumper.Handler handler;
+
+	Sprite spriteAscend;
 
 	bool isFinished;
 
-	private JuStAscend() {}
+	MBDWJumper.Handler handler;
+
+	private JuStAscend() {
+		spriteAscend = Resources.Load<Sprite>("Angel Ascend");
+	}
 	
 	public override void Enter (MBDWJumper.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
 		isFinished = false;
+
+		handler.SetSprite(spriteAscend);
 	}
 
 	public override void Update () {
