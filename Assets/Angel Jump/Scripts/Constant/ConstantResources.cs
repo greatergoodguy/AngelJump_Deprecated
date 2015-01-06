@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class ConstantResources {
 
-	public const string ATTACK_BLADE 	= "Attack Blade";
+	public const string ATTACK_BLADE_PHOTON 	= "Attack Blade Photon";
 	public const string BACKGROUND 		= "Background";
 	public const string GROUND 			= "Ground";
 	public const string GROUND_LONG 	= "Ground Long";

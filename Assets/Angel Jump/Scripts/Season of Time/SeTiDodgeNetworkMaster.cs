@@ -48,7 +48,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 	}
 
 	private void CreateObstacle1() {
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.ATTACK_BLADE, transformSpawnPointLeft.position, Quaternion.identity, 0, null);
+		PhotonNetwork.InstantiateSceneObject(ConstantResources.ATTACK_BLADE_PHOTON, transformSpawnPointLeft.position, Quaternion.identity, 0, null);
 	}
 
 	private static SeTiDodgeNetworkMaster instance;

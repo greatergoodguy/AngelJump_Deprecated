@@ -129,10 +129,6 @@ public class MBDWJumper : MBDW_BaseJumper {
 		canMoveLeft = true;
 		canMoveRight = true;
 	}
-	
-	public void Injure() {
-		velY = 30;
-	}
 
 	public class Handler {
 
