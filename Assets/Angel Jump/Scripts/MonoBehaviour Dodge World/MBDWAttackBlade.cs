@@ -31,6 +31,8 @@ public class MBDWAttackBlade : MBDW_Base {
 
 		if(other.tag == ConstantTags.JUMPER) {
 			MBDWJumper jumper = other.GetComponent<MBDWJumper>();
+			jumper.SwitchToJumperState(JuStInjure.Instance);
+
 		}
 	}
 }
