@@ -8,7 +8,7 @@ public class SeTiPlay : SeTi_Base {
 	MBTLController controller;
 
 	private SeTiPlay() {
-		controller = GuildOfMB.MBP1Controller;
+		controller = GuildOfMB.MBTLController;
 	}
 
 	public override void Enter () {

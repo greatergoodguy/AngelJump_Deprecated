@@ -6,11 +6,11 @@ public class MBDWJumperPhoton : MBDW_Base {
 
 	private static readonly string TAG = "MBDWJumperPhoton";
 
-	private static readonly float GRAVITY_PIXELS_PER_SECOND_SQUARED = -98 * 3; 
-	private static readonly float HORIZONTAL_SPEED_PIXELS_PER_SECOND = 300; 
+	[Range(-10, 0)] public float gravityUnitsPerSecondSquared 	= -6.05f;
+	[Range(1, 10)] public float horizontalSpeedUnitsPerSecond 	= 5.52f;
+	[Range(1, 10)] public float jumpVelocityUnitsPerSecond 		= 6.82f;
 
 	float velY = 0;
-	float bounceVel = 0;
 
 	private bool canMoveLeft = true;
 	private bool canMoveRight = true;
@@ -19,46 +19,21 @@ public class MBDWJumperPhoton : MBDW_Base {
 
 	void Start () {
 		photonView = GetComponent<PhotonView>();
-
-		BounceMode3();
 	}
 
 	void Update () {
 		if(photonView.isMine) {
-
-			if(Input.GetKeyDown(KeyCode.Alpha1)) {
-				BounceMode1();
-			}
-			else if(Input.GetKeyDown(KeyCode.Alpha2)) {
-				BounceMode2();
-			}
-			else if(Input.GetKeyDown(KeyCode.Alpha3)) {
-				BounceMode3();
-			}
-
 			if(Input.GetKeyDown(KeyCode.Escape)) {
 				Reset();
 			}
 		}
 	}
 
-	void BounceMode1() {
-		bounceVel = 100;
-	}
-
-	void BounceMode2() {
-		bounceVel = 140;
-	}
-
-	void BounceMode3() {
-		bounceVel = 280;
-	}
-
 	void FixedUpdate () {
-		velY = velY + Time.deltaTime * GRAVITY_PIXELS_PER_SECOND_SQUARED;
+		velY = velY + Time.deltaTime * gravityUnitsPerSecondSquared;
 
 		float deltaX = 0;
-		float deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * GRAVITY_PIXELS_PER_SECOND_SQUARED);
+		float deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * gravityUnitsPerSecondSquared);
 
 		float horizontalAxis = Input.GetAxis("Horizontal");
 
@@ -66,12 +41,12 @@ public class MBDWJumperPhoton : MBDW_Base {
 			if(Input.GetKey(KeyCode.LeftArrow) && canMoveLeft) { 
 				if(horizontalAxis > 0) {
 					horizontalAxis = 0;}
-				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+				deltaX = horizontalSpeedUnitsPerSecond * Time.deltaTime * horizontalAxis;
 			}
 			if(Input.GetKey(KeyCode.RightArrow) && canMoveRight) { 
 				if(horizontalAxis < 0) {
 					horizontalAxis = 0;}
-				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+				deltaX = horizontalSpeedUnitsPerSecond * Time.deltaTime * horizontalAxis;
 			}
 		}
 
@@ -87,7 +62,7 @@ public class MBDWJumperPhoton : MBDW_Base {
 	}
 
 	public void Bounce() {
-		velY = bounceVel;
+		velY = jumpVelocityUnitsPerSecond;
 	}
 
 	public void FreezeMoveLeft() {

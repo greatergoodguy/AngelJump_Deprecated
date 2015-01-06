@@ -10,17 +10,20 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 	Transform transformSpawnPointLeft;
 
 	private SeTiDodgeNetworkMaster() {
-		transformSpawnPointLeft = GameObject.Find("Dodge Network").transform.FindChild("Spawn Point Left");
 	}
 	
 	public override void Enter () {
 		base.Enter ();
 
+		transformSpawnPointLeft = GameObject.Find("Dodge Network").transform.FindChild("Spawn Point Left");
+
 		PhotonNetwork.InstantiateSceneObject(ConstantResources.BACKGROUND, new Vector3(0, 0, 10), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(-170, 0, 0), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(170, 0, 0), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(10, -92, 0), Quaternion.identity, 0, null);
-		PhotonNetwork.Instantiate(ConstantResources.KID_1, new Vector3(10, -92, 0), Quaternion.identity, 0);
+		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(-5.12f, 0, 0), Quaternion.identity, 0, null);
+		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(5.1f, 0, 0), Quaternion.identity, 0, null);
+		PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(0, -2.9f, 0), Quaternion.identity, 0, null);
+
+		PhotonNetwork.Instantiate(ConstantResources.KID_1, new Vector3(0, 0, 0), Quaternion.identity, 0);
+		//PhotonNetwork.Instantiate(ConstantResources.KID_2, new Vector3(0, 0, 0), Quaternion.identity, 0);
 	}
 
 	public override void Update () {

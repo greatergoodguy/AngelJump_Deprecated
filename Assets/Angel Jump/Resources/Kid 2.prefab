@@ -57,8 +57,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 28, y: 32}
-  m_Center: {x: 3, y: 0}
+  m_Size: {x: .670000017, y: .899999976}
+  m_Center: {x: .0700000003, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f33d5d2e5d94989969d094839fa3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityUnitsPerSecondSquared: -6.05000019
+  horizontalSpeedUnitsPerSecond: 5.51999998
+  jumpVelocityUnitsPerSecond: 6.82000017
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

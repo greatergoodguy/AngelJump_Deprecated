@@ -10,13 +10,13 @@ public class SeTiDodge : SeTi_Base {
 	GameObject goPlayer;
 
 	private SeTiDodge() {
-		mbp1Music = GuildOfMB.MBP1Music;
+		mbp1Music = GuildOfMB.MBTLMusic;
 	}
 
 	public override void Enter () {
 		base.Enter ();
 
-		GuildOfMB.MBP1Dodge.TurnOn();
+		GuildOfMB.MBTLDodge.TurnOn();
 
 		string playerAngelString = ConstantResources.JUMPER_ANGEL;
 		goPlayer = (GameObject) Object.Instantiate(Resources.Load(playerAngelString), Vector3.zero, Quaternion.identity);

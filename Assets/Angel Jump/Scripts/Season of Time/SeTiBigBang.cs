@@ -11,8 +11,9 @@ public class SeTiBigBang : SeTi_Base {
 	public override void Enter () {
 		base.Enter ();
 
-		GuildOfMB.MBP1MainMenu.TurnOff();;
-		GuildOfMB.MBP1Dodge.TurnOff();
+		GuildOfMB.MBTLMainMenu.TurnOff();;
+		GuildOfMB.MBTLDodge.TurnOff();
+		GuildOfMB.MBTLDodgeNetwork.TurnOff();
 	}
 
 	public override bool IsFinished () {

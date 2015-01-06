@@ -7,9 +7,9 @@ public class MBDWJumper : MBDW_BaseJumper {
 	
 	private static readonly string TAG = "MBDWJumper";
 	
-	private static readonly float GRAVITY_PIXELS_PER_SECOND_SQUARED 	= -98 * 3; 
-	private static readonly float HORIZONTAL_SPEED_PIXELS_PER_SECOND 	= 300; 
-	private static readonly float JUMP_VELOCITY_PIXELS_PER_SECOND 		= 280; 
+	[Range(-10, 0)] public float gravityUnitsPerSecondSquared 	= -6.05f;
+	[Range(1, 10)] public float horizontalSpeedUnitsPerSecond 	= 5.52f;
+	[Range(1, 10)] public float jumpVelocityUnitsPerSecond 		= 6.82f;
 	
 	float velY = 0;
 
@@ -49,13 +49,13 @@ public class MBDWJumper : MBDW_BaseJumper {
 	}
 	
 	void FixedUpdate () {
-		velY = velY + Time.deltaTime * GRAVITY_PIXELS_PER_SECOND_SQUARED;
+		velY = velY + Time.deltaTime * gravityUnitsPerSecondSquared;
 		
 		float deltaX = 0;
 		float deltaY = 0;
 
 		if(isGravityEnabled) {
-			deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * GRAVITY_PIXELS_PER_SECOND_SQUARED);
+			deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * gravityUnitsPerSecondSquared);
 		}
 
 		if(isControllable) {
@@ -63,7 +63,7 @@ public class MBDWJumper : MBDW_BaseJumper {
 			if(Input.GetKey(KeyCode.LeftArrow) && canMoveLeft) { 
 				if(horizontalAxis > 0) {
 					horizontalAxis = 0;}
-				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+				deltaX = horizontalSpeedUnitsPerSecond * Time.deltaTime * horizontalAxis;
 
 				if(isLookingRight) {
 					FlipLookDirection();
@@ -72,7 +72,7 @@ public class MBDWJumper : MBDW_BaseJumper {
 			if(Input.GetKey(KeyCode.RightArrow) && canMoveRight) { 
 				if(horizontalAxis < 0) {
 					horizontalAxis = 0;}
-				deltaX = HORIZONTAL_SPEED_PIXELS_PER_SECOND * Time.deltaTime * horizontalAxis;
+				deltaX = horizontalSpeedUnitsPerSecond * Time.deltaTime * horizontalAxis;
 
 				if(!isLookingRight) {
 					FlipLookDirection();
@@ -158,7 +158,7 @@ public class MBDWJumper : MBDW_BaseJumper {
 		}
 
 		public void Jump() {
-			jumper.velY = JUMP_VELOCITY_PIXELS_PER_SECOND;
+			jumper.velY = jumper.jumpVelocityUnitsPerSecond;
 		}
 	}
 }

@@ -10,10 +10,10 @@ public class SeTiMainMenu : SeTi_Base {
 	MBTLPhoton photon;
 
 	private SeTiMainMenu() {
-		mainMenu = GuildOfMB.MBP1MainMenu;
+		mainMenu = GuildOfMB.MBTLMainMenu;
 		mainMenu.TurnOn();
 
-		photon = GuildOfMB.MBP1Photon;
+		photon = GuildOfMB.MBTLPhoton;
 	}
 
 	public override void Enter () {

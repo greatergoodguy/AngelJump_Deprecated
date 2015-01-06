@@ -3,53 +3,63 @@ using System.Collections;
 
 public class GuildOfMB {
 
-	private static MBTLMainMenu mbp1MainMenu;
-	public static MBTLMainMenu MBP1MainMenu {
+	private static MBTLMainMenu mbtlMainMenu;
+	public static MBTLMainMenu MBTLMainMenu {
 		get  { 
-			if(mbp1MainMenu == null) {
-				mbp1MainMenu = GameObject.Find("Main Menu").GetComponent<MBTLMainMenu>();
+			if(mbtlMainMenu == null) {
+				mbtlMainMenu = GameObject.Find("Main Menu").GetComponent<MBTLMainMenu>();
 			} 
-			return mbp1MainMenu;
+			return mbtlMainMenu;
 		}
 	}
 
-	private static MBTLController mbp1Controller;
-	public static MBTLController MBP1Controller {
+	private static MBTLController mbtlController;
+	public static MBTLController MBTLController {
 		get  { 
-			if(mbp1Controller == null) {
-				mbp1Controller = GameObject.Find("Controller").GetComponent<MBTLController>();
+			if(mbtlController == null) {
+				mbtlController = GameObject.Find("Controller").GetComponent<MBTLController>();
 			} 
-			return mbp1Controller;
+			return mbtlController;
 		}
 	}
 
-	private static MBTLDodge mbp1Dodge;
-	public static MBTLDodge MBP1Dodge {
+	private static MBTLDodge mbtlDodge;
+	public static MBTLDodge MBTLDodge {
 		get  { 
-			if(mbp1Dodge == null) {
-				mbp1Dodge = GameObject.Find("Dodge").GetComponent<MBTLDodge>();
+			if(mbtlDodge == null) {
+				mbtlDodge = GameObject.Find("Dodge").GetComponent<MBTLDodge>();
 			} 
-			return mbp1Dodge;
+			return mbtlDodge;
 		}
 	}
 
-	private static MBTLMusic mbp1Music;
-	public static MBTLMusic MBP1Music {
+	private static MBTLDodgeNetwork mbtlDodgeNetwork;
+	public static MBTLDodgeNetwork MBTLDodgeNetwork {
 		get  { 
-			if(mbp1Music == null) {
-				mbp1Music = GameObject.Find("Music").GetComponent<MBTLMusic>();
+			if(mbtlDodgeNetwork == null) {
+				mbtlDodgeNetwork = GameObject.Find("Dodge Network").GetComponent<MBTLDodgeNetwork>();
 			} 
-			return mbp1Music;
+			return mbtlDodgeNetwork;
 		}
 	}
 
-	private static MBTLPhoton mbp1Photon;
-	public static MBTLPhoton MBP1Photon {
+	private static MBTLMusic mbtlMusic;
+	public static MBTLMusic MBTLMusic {
 		get  { 
-			if(mbp1Photon == null) {
-				mbp1Photon = GameObject.Find("Photon").GetComponent<MBTLPhoton>();
+			if(mbtlMusic == null) {
+				mbtlMusic = GameObject.Find("Music").GetComponent<MBTLMusic>();
+			} 
+			return mbtlMusic;
+		}
+	}
+
+	private static MBTLPhoton mbtlPhoton;
+	public static MBTLPhoton MBTLPhoton {
+		get  { 
+			if(mbtlPhoton == null) {
+				mbtlPhoton = GameObject.Find("Photon").GetComponent<MBTLPhoton>();
 			}
-			return mbp1Photon;
+			return mbtlPhoton;
 		}
 	}
 }

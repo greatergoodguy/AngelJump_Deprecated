@@ -4,14 +4,16 @@ using System.Collections;
 public class SeTiDodgeNetwork : SeTi_Base {
 	
 	private static readonly string TAG = "SeTiDodgeNetwork";
-	
-	MBTLMusic mbp1Music;
+
+	MBTLDodgeNetwork mbtlDodgeNetwork;
+	MBTLMusic mbtlMusic;
 
 	bool isFinished = false;
 	SeTi_Base nextSeti = SeTiMock.Instance;
 	
 	private SeTiDodgeNetwork() {
-		mbp1Music = GuildOfMB.MBP1Music;
+		mbtlDodgeNetwork = GuildOfMB.MBTLDodgeNetwork;
+		mbtlMusic = GuildOfMB.MBTLMusic;
 	}
 	
 	public override void Enter () {
@@ -28,6 +30,7 @@ public class SeTiDodgeNetwork : SeTi_Base {
 			nextSeti = SeTiDodgeNetworkClient.Instance;
 		}
 
+		mbtlDodgeNetwork.TurnOn();
 		//mbp1Music.BGM_Play();
 	}
 	
