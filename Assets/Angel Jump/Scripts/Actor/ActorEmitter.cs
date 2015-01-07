@@ -3,7 +3,29 @@ using System.Collections;
 
 public class ActorEmitter : MonoBehaviour {
 
-	public GameObject launchItem;
+	public enum LaunchItem {
+		badiGhost,
+		attackBlade,
+		none
+	}
+	
+	private void SetLaunchItem() {
+		switch(launchItem) {
+		case LaunchItem.badiGhost:
+			goLaunchItem = (GameObject) Resources.Load("Badi Ghost");
+			break;
+		case LaunchItem.attackBlade:
+			goLaunchItem = (GameObject) Resources.Load("Attack Blade");
+			break;
+		case LaunchItem.none:
+			break;
+		}
+	}
+
+	public LaunchItem launchItem = LaunchItem.badiGhost;
+	LaunchItem launchItemPoser;
+
+	private GameObject goLaunchItem;
 
 	[Range(0, 10)] public float cycleLengthInSeconds = 2;
 	[Range(0, 10)] public float launchSpeedInUnitsPerSecond = 2;
@@ -11,9 +33,8 @@ public class ActorEmitter : MonoBehaviour {
 	float timeElapsed;
 
 	void Awake() {
-		if(launchItem == null) {
-			launchItem = (GameObject) Resources.Load("Badi Ghost");
-		}
+		launchItemPoser = launchItem;
+		SetLaunchItem();
 	}
 
 	// Use this for initialization
@@ -23,16 +44,21 @@ public class ActorEmitter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(launchItemPoser != launchItem) {
+			SetLaunchItem();
+			launchItemPoser = launchItem;
+		}
+
 		timeElapsed += Time.deltaTime;
 
 		if(timeElapsed >= cycleLengthInSeconds) {
 			timeElapsed = 0;
 
-			if(launchItem != null) {
-				GameObject launchItemClone = (GameObject) Object.Instantiate(launchItem, transform.position, transform.rotation);
-				launchItemClone.AddComponent<GeneSuicide>();
+			if(goLaunchItem != null) {
+				GameObject goLaunchItemClone = (GameObject) Object.Instantiate(goLaunchItem, transform.position, transform.rotation);
+				goLaunchItemClone.AddComponent<GeneSuicide>();
 
-				GeneMotionForward geneMotion = launchItemClone.AddComponent<GeneMotionForward>();
+				GeneMotionForward geneMotion = goLaunchItemClone.AddComponent<GeneMotionForward>();
 				geneMotion.SetVelocity(launchSpeedInUnitsPerSecond);
 			}
 		}
