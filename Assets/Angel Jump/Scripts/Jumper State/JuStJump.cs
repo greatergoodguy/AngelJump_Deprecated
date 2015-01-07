@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class JuStJump : JuSt_Base {
 		
 	private JuStJump() {}
 	
-	public override void Enter (MBDWJumper.Handler handler) {
+	public override void Enter (ActorDWJumper.Handler handler) {
 		base.Enter (handler);
 
 		handler.Jump();

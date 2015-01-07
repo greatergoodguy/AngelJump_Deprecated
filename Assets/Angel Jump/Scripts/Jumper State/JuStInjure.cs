@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class JuStInjure : JuSt_Base {
 
 	private static readonly float STATE_DURATION_IN_SECONDS = 3;
 
-	MBDWJumper.Handler handler;
+	ActorDWJumper.Handler handler;
 
 	Sprite spriteStill;
 
@@ -16,7 +16,7 @@ public class JuStInjure : JuSt_Base {
 		spriteStill = Resources.Load<Sprite>("Angel Still");
 	}
 
-	public override void Enter (MBDWJumper.Handler handler) {
+	public override void Enter (ActorDWJumper.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
 

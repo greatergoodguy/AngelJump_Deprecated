@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class JuStBirth : JuSt_Base {
 	
 	private JuStBirth() {}
 	
-	public override void Enter (MBDWJumper.Handler handler) {
+	public override void Enter (ActorDWJumper.Handler handler) {
 		base.Enter(handler);
 
 		handler.SetGravityEnabled(true);

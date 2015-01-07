@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public abstract class JuSt_Base {
-	public virtual void Enter(MBDWJumper.Handler handler) {}
+	public virtual void Enter(ActorDWJumper.Handler handler) {}
 	public virtual void Update() {}
 	public virtual void Exit() {}
 

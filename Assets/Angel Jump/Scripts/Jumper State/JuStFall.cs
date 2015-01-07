@@ -5,13 +5,13 @@ public class JuStFall : JuSt_Base {
 
 	Sprite spriteFall;
 
-	MBDWJumper.Handler handler;
+	ActorDWJumper.Handler handler;
 
 	private JuStFall() {
 		spriteFall = Resources.Load<Sprite>("Angel Fall");
 	}
 
-	public override void Enter (MBDWJumper.Handler handler) {
+	public override void Enter (ActorDWJumper.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
 

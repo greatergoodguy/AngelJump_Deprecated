@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class JuStAscend : JuSt_Base {
@@ -7,13 +7,13 @@ public class JuStAscend : JuSt_Base {
 
 	bool isFinished;
 
-	MBDWJumper.Handler handler;
+	ActorDWJumper.Handler handler;
 
 	private JuStAscend() {
 		spriteAscend = Resources.Load<Sprite>("Angel Ascend");
 	}
 	
-	public override void Enter (MBDWJumper.Handler handler) {
+	public override void Enter (ActorDWJumper.Handler handler) {
 		base.Enter (handler);
 		this.handler = handler;
 		isFinished = false;
