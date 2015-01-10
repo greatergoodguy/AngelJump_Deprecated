@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class ActorDWAttackBlade : ActorDW_Base {
+public class ActorAttackBlade : Actor_Base {
 
-	private static readonly string TAG = typeof(ActorDWAttackBlade).Name;
+	private static readonly string TAG = typeof(ActorAttackBlade).Name;
 
 	[Range(0, 10)] public float horizontalSpeedUnitsPerSecond = 1.5f;
 	[Range(1, 100)] public float lifeDurationInSeconds = 10;
@@ -25,7 +25,7 @@ public class ActorDWAttackBlade : ActorDW_Base {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == ConstantTags.KID) {
-			MBDWJumperPhoton kid = other.GetComponent<MBDWJumperPhoton>();
+			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();
 			kid.Injure();
 		}
 

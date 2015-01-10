@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(PhotonView))]
-public class MBDWJumperPhoton : ActorDW_Base {
+public class ActorJumperPhoton : Actor_Base {
 
 	private static readonly string TAG = "MBDWJumperPhoton";
 

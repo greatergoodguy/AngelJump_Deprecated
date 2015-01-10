@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(PhotonView))]
-public class ActorDWWall : ActorDW_Base {
+public class ActorWall : Actor_Base {
 
-	private static readonly string TAG = typeof(ActorDWWall).Name;
+	private static readonly string TAG = typeof(ActorWall).Name;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == ConstantTags.KID) {
-			MBDWJumperPhoton kid = other.GetComponent<MBDWJumperPhoton>();
+			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();
 			
 			if(IsCollisionFromLeft(other)) 			{ kid.FreezeMoveRight();}
 			else if(IsCollisionFromRight(other)) 	{ kid.FreezeMoveLeft();}
@@ -24,7 +24,7 @@ public class ActorDWWall : ActorDW_Base {
 	
 	void OnTriggerExit2D(Collider2D other) {
 		if(other.tag == ConstantTags.KID) {
-			MBDWJumperPhoton kid = other.GetComponent<MBDWJumperPhoton>();	
+			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();	
 			if(IsCollisionFromLeft(other) || IsCollisionFromRight(other)) { kid.Unfreeze();}
 		}
 

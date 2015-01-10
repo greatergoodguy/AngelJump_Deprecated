@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class ActorDWGround : ActorDW_Base {
+public class ActorGround : Actor_Base {
 
-	private static readonly string TAG = typeof(ActorDWGround).Name;
+	private static readonly string TAG = typeof(ActorGround).Name;
 
 	void Start() {
 
@@ -18,7 +18,7 @@ public class ActorDWGround : ActorDW_Base {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == ConstantTags.KID) {
-			MBDWJumperPhoton kid = other.GetComponent<MBDWJumperPhoton>();
+			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();
 			kid.Bounce();
 		}
 	}
