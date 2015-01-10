@@ -3,29 +3,30 @@ using System.Collections;
 
 public class SeTiDodge : SeTi_Base {
 
-	private static readonly string TAG = "SeTiDodge";
+	private static readonly string TAG = typeof(SeTiDodge).Name;
 
-	MBTLMusic mbp1Music;
+	GodMusic mbp1Music;
 
 	GameObject goPlayer;
 
 	private SeTiDodge() {
-		mbp1Music = GuildOfMB.MBTLMusic;
+		mbp1Music = GuildOfMB.GodMusic;
 	}
 
 	public override void Enter () {
 		base.Enter ();
 
-		GuildOfMB.MBTLDodge.TurnOn();
+		GuildOfMB.GodDodge.TurnOn();
 
 		string playerAngelString = ConstantResources.JUMPER_ANGEL;
-		goPlayer = (GameObject) Object.Instantiate(Resources.Load(playerAngelString), Vector3.zero, Quaternion.identity);
+		//goPlayer = (GameObject) Object.Instantiate(Resources.Load(playerAngelString), Vector3.zero, Quaternion.identity);
 	}
 
 	public override void Exit () {
 		base.Exit ();
 
-		GameObject.Destroy(goPlayer);
+		if(goPlayer != null) {
+			GameObject.Destroy(goPlayer);}
 	}
 
 	private static SeTiDodge instance;

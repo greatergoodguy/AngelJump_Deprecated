@@ -5,15 +5,15 @@ public class SeTiDodgeNetwork : SeTi_Base {
 	
 	private static readonly string TAG = "SeTiDodgeNetwork";
 
-	MBTLDodgeNetwork mbtlDodgeNetwork;
-	MBTLMusic mbtlMusic;
+	GodDodgeNetwork mbtlDodgeNetwork;
+	GodMusic mbtlMusic;
 
 	bool isFinished = false;
 	SeTi_Base nextSeti = SeTiMock.Instance;
 	
 	private SeTiDodgeNetwork() {
-		mbtlDodgeNetwork = GuildOfMB.MBTLDodgeNetwork;
-		mbtlMusic = GuildOfMB.MBTLMusic;
+		mbtlDodgeNetwork = GuildOfMB.GodDodgeNetwork;
+		mbtlMusic = GuildOfMB.GodMusic;
 	}
 	
 	public override void Enter () {

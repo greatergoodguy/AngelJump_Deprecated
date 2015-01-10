@@ -15,7 +15,7 @@ public class ActorDWWall : ActorDW_Base {
 		}
 
 		if(other.tag == ConstantTags.JUMPER) {
-			ActorDWJumper jumper = other.GetComponent<ActorDWJumper>();	
+			ActorAngel jumper = other.GetComponent<ActorAngel>();	
 			
 			if(IsCollisionFromLeft(other)) 			{ jumper.FreezeMoveRight();}
 			else if(IsCollisionFromRight(other)) 	{ jumper.FreezeMoveLeft();}
@@ -29,7 +29,7 @@ public class ActorDWWall : ActorDW_Base {
 		}
 
 		if(other.tag == ConstantTags.JUMPER) {
-			ActorDWJumper jumper = other.GetComponent<ActorDWJumper>();	
+			ActorAngel jumper = other.GetComponent<ActorAngel>();	
 			if(IsCollisionFromLeft(other) || IsCollisionFromRight(other)) { jumper.Unfreeze();}
 		}
 	}

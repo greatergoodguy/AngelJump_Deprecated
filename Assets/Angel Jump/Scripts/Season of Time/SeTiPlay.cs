@@ -5,10 +5,10 @@ public class SeTiPlay : SeTi_Base {
 
 	private static readonly string TAG = "SeTiPlay";
 	
-	MBTLController controller;
+	GodController controller;
 
 	private SeTiPlay() {
-		controller = GuildOfMB.MBTLController;
+		controller = GuildOfMB.GodController;
 	}
 
 	public override void Enter () {

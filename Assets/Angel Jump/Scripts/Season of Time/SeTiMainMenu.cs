@@ -6,14 +6,14 @@ public class SeTiMainMenu : SeTi_Base {
 	bool isFinished;
 	SeTi_Base nextSeTi = SeTiMock.Instance;
 
-	MBTLMainMenu mainMenu;
-	MBTLPhoton photon;
+	GodMainMenu mainMenu;
+	GodPhoton photon;
 
 	private SeTiMainMenu() {
-		mainMenu = GuildOfMB.MBTLMainMenu;
+		mainMenu = GuildOfMB.GodMainMenu;
 		mainMenu.TurnOn();
 
-		photon = GuildOfMB.MBTLPhoton;
+		photon = GuildOfMB.GodPhoton;
 	}
 
 	public override void Enter () {

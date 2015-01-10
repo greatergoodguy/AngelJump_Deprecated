@@ -15,7 +15,7 @@ public static class UtilLogger {
 	}
 	
 	public static void Log(string tag, string message) {
-		if(tag == "MBDWJumper" && !logJumper) {
+		if(tag == "ActorDWJumper" && !logJumper) {
 			return;}
 
 		if(tag == "_MasterScript" && !logMasterScript) {

@@ -30,8 +30,8 @@ public class ActorDWAttackBlade : ActorDW_Base {
 		}
 
 		if(other.tag == ConstantTags.JUMPER) {
-			ActorDWJumper jumper = other.GetComponent<ActorDWJumper>();
-			jumper.SwitchToJumperState(JuStInjure.Instance);
+			ActorAngel jumper = other.GetComponent<ActorAngel>();
+			jumper.SwitchToAngelState(AnStCollision.Instance);
 
 		}
 	}

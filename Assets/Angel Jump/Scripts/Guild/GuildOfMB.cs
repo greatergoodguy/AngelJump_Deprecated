@@ -3,63 +3,63 @@ using System.Collections;
 
 public class GuildOfMB {
 
-	private static MBTLMainMenu mbtlMainMenu;
-	public static MBTLMainMenu MBTLMainMenu {
+	private static GodMainMenu godMainMenu;
+	public static GodMainMenu GodMainMenu {
 		get  { 
-			if(mbtlMainMenu == null) {
-				mbtlMainMenu = GameObject.Find("Main Menu").GetComponent<MBTLMainMenu>();
+			if(godMainMenu == null) {
+				godMainMenu = GameObject.Find("Main Menu").GetComponent<GodMainMenu>();
 			} 
-			return mbtlMainMenu;
+			return godMainMenu;
 		}
 	}
 
-	private static MBTLController mbtlController;
-	public static MBTLController MBTLController {
+	private static GodController godController;
+	public static GodController GodController {
 		get  { 
-			if(mbtlController == null) {
-				mbtlController = GameObject.Find("Controller").GetComponent<MBTLController>();
+			if(godController == null) {
+				godController = GameObject.Find("Controller").GetComponent<GodController>();
 			} 
-			return mbtlController;
+			return godController;
 		}
 	}
 
-	private static MBTLDodge mbtlDodge;
-	public static MBTLDodge MBTLDodge {
+	private static GodDodge godDodge;
+	public static GodDodge GodDodge {
 		get  { 
-			if(mbtlDodge == null) {
-				mbtlDodge = GameObject.Find("Dodge").GetComponent<MBTLDodge>();
+			if(godDodge == null) {
+				godDodge = GameObject.Find("Dodge").GetComponent<GodDodge>();
 			} 
-			return mbtlDodge;
+			return godDodge;
 		}
 	}
 
-	private static MBTLDodgeNetwork mbtlDodgeNetwork;
-	public static MBTLDodgeNetwork MBTLDodgeNetwork {
+	private static GodDodgeNetwork godDodgeNetwork;
+	public static GodDodgeNetwork GodDodgeNetwork {
 		get  { 
-			if(mbtlDodgeNetwork == null) {
-				mbtlDodgeNetwork = GameObject.Find("Dodge Network").GetComponent<MBTLDodgeNetwork>();
+			if(godDodgeNetwork == null) {
+				godDodgeNetwork = GameObject.Find("Dodge Network").GetComponent<GodDodgeNetwork>();
 			} 
-			return mbtlDodgeNetwork;
+			return godDodgeNetwork;
 		}
 	}
 
-	private static MBTLMusic mbtlMusic;
-	public static MBTLMusic MBTLMusic {
+	private static GodMusic godMusic;
+	public static GodMusic GodMusic {
 		get  { 
-			if(mbtlMusic == null) {
-				mbtlMusic = GameObject.Find("Music").GetComponent<MBTLMusic>();
+			if(godMusic == null) {
+				godMusic = GameObject.Find("Music").GetComponent<GodMusic>();
 			} 
-			return mbtlMusic;
+			return godMusic;
 		}
 	}
 
-	private static MBTLPhoton mbtlPhoton;
-	public static MBTLPhoton MBTLPhoton {
+	private static GodPhoton godPhoton;
+	public static GodPhoton GodPhoton {
 		get  { 
-			if(mbtlPhoton == null) {
-				mbtlPhoton = GameObject.Find("Photon").GetComponent<MBTLPhoton>();
+			if(godPhoton == null) {
+				godPhoton = GameObject.Find("Photon").GetComponent<GodPhoton>();
 			}
-			return mbtlPhoton;
+			return godPhoton;
 		}
 	}
 }

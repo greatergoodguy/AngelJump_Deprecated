@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class SeTiBigBang : SeTi_Base {
@@ -11,9 +11,9 @@ public class SeTiBigBang : SeTi_Base {
 	public override void Enter () {
 		base.Enter ();
 
-		GuildOfMB.MBTLMainMenu.TurnOff();;
-		GuildOfMB.MBTLDodge.TurnOff();
-		GuildOfMB.MBTLDodgeNetwork.TurnOff();
+		GuildOfMB.GodMainMenu.TurnOff();;
+		GuildOfMB.GodDodge.TurnOff();
+		GuildOfMB.GodDodgeNetwork.TurnOff();
 	}
 
 	public override bool IsFinished () {

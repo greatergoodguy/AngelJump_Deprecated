@@ -60,6 +60,10 @@ public class ActorEmitter : MonoBehaviour {
 
 				GeneMotionForward geneMotion = goLaunchItemClone.AddComponent<GeneMotionForward>();
 				geneMotion.SetVelocity(launchSpeedInUnitsPerSecond);
+
+				if(transform.parent != null) {
+					goLaunchItemClone.transform.parent = transform.parent;
+				}
 			}
 		}
 	}
