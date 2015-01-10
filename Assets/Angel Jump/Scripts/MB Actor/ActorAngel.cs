@@ -59,10 +59,6 @@ public class ActorAngel : Actor_Base {
 			angelState.Enter(handler);
 			UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
 		}
-
-		if(Input.GetKeyDown(KeyCode.Escape)) {
-			Reset();
-		}
 	}
 	
 	void FixedUpdate () {
@@ -152,8 +148,12 @@ public class ActorAngel : Actor_Base {
 		UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
 	}
 	
-	public void Reset() {
+	public override void Reset() {
+
+		AnSt_Base angelState = AnStBirth.Instance;
+
 		transform.position = Vector3.zero;
+		velX = 0;
 		velY = 0;
 	}
 

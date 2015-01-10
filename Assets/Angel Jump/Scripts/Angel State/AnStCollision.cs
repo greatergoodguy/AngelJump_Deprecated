@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AnStCollision : AnSt_Base {
 
-	private static readonly float STATE_DURATION_IN_SECONDS = 3;
+	private static readonly float STATE_DURATION_IN_SECONDS = 1.4f;
 
 	ActorAngel.Handler handler;
 

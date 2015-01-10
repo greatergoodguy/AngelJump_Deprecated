@@ -11,13 +11,13 @@ public class SeTiMainMenu : SeTi_Base {
 
 	private SeTiMainMenu() {
 		mainMenu = GuildOfMB.GodMainMenu;
-		mainMenu.TurnOn();
-
 		photon = GuildOfMB.GodPhoton;
 	}
 
 	public override void Enter () {
 		base.Enter ();
+
+		mainMenu.TurnOn();
 
 		isFinished = false;
 

@@ -5,28 +5,70 @@ public class SeTiDodge : SeTi_Base {
 
 	private static readonly string TAG = typeof(SeTiDodge).Name;
 
-	GodMusic mbp1Music;
+	GodDodge godDodge;
+	GodMusic godMusic;
 
-	GameObject goPlayer;
+	bool isPaused;
+	bool isFinished;
 
 	private SeTiDodge() {
-		mbp1Music = GuildOfMB.GodMusic;
+		godDodge = GuildOfMB.GodDodge;
+		godMusic = GuildOfMB.GodMusic;
 	}
 
 	public override void Enter () {
 		base.Enter ();
 
-		GuildOfMB.GodDodge.TurnOn();
+		godDodge.TurnOn();
+		godDodge.Reset();
+		godDodge.PauseMenu.TurnOff();
 
-		string playerAngelString = ConstantResources.JUMPER_ANGEL;
-		//goPlayer = (GameObject) Object.Instantiate(Resources.Load(playerAngelString), Vector3.zero, Quaternion.identity);
+		godDodge.PauseMenu.actionResume += () => {
+			TogglePauseMenu();
+		};
+		
+		godDodge.PauseMenu.actionQuit += () => {
+			isFinished = true;
+		};
+
+		isFinished = false;
+	}
+
+	public override void Update () {
+		base.Update ();
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			TogglePauseMenu();
+		}
+	}
+
+	void TogglePauseMenu() {
+		godDodge.PauseMenu.ToggleOnOff();
+		if(godDodge.PauseMenu.IsOn) {
+			Time.timeScale = 0;
+		}
+		else {
+			Time.timeScale = 1;
+		}
 	}
 
 	public override void Exit () {
 		base.Exit ();
 
-		if(goPlayer != null) {
-			GameObject.Destroy(goPlayer);}
+		godDodge.PauseMenu.actionResume += () => {};
+		godDodge.PauseMenu.actionQuit += () => {};
+
+		Time.timeScale = 1;
+
+		GuildOfMB.GodDodge.TurnOff();
+	}
+
+	public override bool IsFinished () {
+		return isFinished;
+	}
+
+	public override SeTi_Base GetNextSeason () {
+		return SeTiMainMenu.Instance;
 	}
 
 	private static SeTiDodge instance;

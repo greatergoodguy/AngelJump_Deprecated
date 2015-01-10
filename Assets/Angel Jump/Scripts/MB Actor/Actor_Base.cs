@@ -29,4 +29,8 @@ public abstract class Actor_Base : MonoBehaviour {
 			TurnOn();
 		}
 	}
+
+	public virtual void Reset() {
+
+	}
 }
