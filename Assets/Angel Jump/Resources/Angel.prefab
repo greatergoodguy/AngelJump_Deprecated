@@ -86,7 +86,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityUnitsPerSecondSquared: -6.05000019
   horizontalSpeedUnitsPerSecond: 5.51999998
-  jumpVelocityUnitsPerSecond: 6.82000017
+  jumpSpeedUnitsPerSecond: 6.82000017
+  bounceCollisionSpeedUnitsPerSecond: 2.81999993
+  bounceAttackSpeedUnitsPerSecond: 5.82000017
+  recoilSpeedUnitsPerSecond: 2.81999993
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

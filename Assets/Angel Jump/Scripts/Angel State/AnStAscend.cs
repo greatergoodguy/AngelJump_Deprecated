@@ -34,7 +34,7 @@ public class AnStAscend : AnSt_Base {
 		return isFinished;
 	}
 
-	public override AnSt_Base GetNextJumperState () {
+	public override AnSt_Base GetNextAngelState () {
 		return AnStFall.Instance;
 	}
 	

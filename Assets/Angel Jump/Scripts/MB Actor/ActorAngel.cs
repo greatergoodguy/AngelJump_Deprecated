@@ -11,15 +11,17 @@ public class ActorAngel : Actor_Base {
 	public static readonly int ANIMATION_COLLISION 	= 2;
 	public static readonly int ANIMATION_FALL 		= 3;
 	public static readonly int ANIMATION_ASCEND 	= 4;
+	public static readonly int ANIMATION_ATTACK 	= 5;
 	public static readonly int ANIMATION_MOCK 		= -1;
 	
 	private static readonly string TAG = typeof(ActorAngel).Name;
 	
-	[Range(-10, 0)] public float gravityUnitsPerSecondSquared 	= -6.05f;
-	[Range(1, 10)] public float horizontalSpeedUnitsPerSecond 	= 5.52f;
-	[Range(1, 10)] public float jumpSpeedUnitsPerSecond 		= 6.82f;
-	[Range(1, 10)] public float bounceSpeedUnitsPerSecond 	= 2.82f;
-	[Range(1, 10)] public float recoilSpeedUnitsPerSecond 	= 2.82f;
+	[Range(-10, 0)] public float gravityUnitsPerSecondSquared 		= -6.05f;
+	[Range(1, 10)] public float horizontalSpeedUnitsPerSecond 		= 5.52f;
+	[Range(1, 10)] public float jumpSpeedUnitsPerSecond 			= 6.82f;
+	[Range(1, 10)] public float bounceCollisionSpeedUnitsPerSecond 	= 2.82f;
+	[Range(1, 10)] public float bounceAttackSpeedUnitsPerSecond 	= 5.82f;
+	[Range(1, 10)] public float recoilSpeedUnitsPerSecond 			= 2.82f;
 
 	float velX = 0;
 	float velY = 0;
@@ -55,9 +57,13 @@ public class ActorAngel : Actor_Base {
 		if(angelState.IsFinished()) {
 			angelState.Exit();
 			UtilLogger.Log(TAG, angelState.GetType().Name + ": Exit");
-			angelState = angelState.GetNextJumperState();
+			angelState = angelState.GetNextAngelState();
 			angelState.Enter(handler);
 			UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
+		}
+
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			SwitchToAngelState(AnStAttack.Instance);
 		}
 	}
 	
@@ -110,8 +116,11 @@ public class ActorAngel : Actor_Base {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if(other.tag == ConstantTags.GROUND && angelState != AnStCollision.Instance) {
+		if(other.tag == ConstantTags.GROUND && angelState == AnStFall.Instance) {
 			SwitchToAngelState(AnStJump.Instance);
+		}
+		else if(other.tag == ConstantTags.GROUND && angelState == AnStAttack.Instance) {
+			velY = bounceAttackSpeedUnitsPerSecond;
 		}
 		else if(other.tag == ConstantTags.GROUND) {
 			Bounce();
@@ -125,7 +134,7 @@ public class ActorAngel : Actor_Base {
 	}
 
 	void Bounce() {
-		velY = bounceSpeedUnitsPerSecond;
+		velY = bounceCollisionSpeedUnitsPerSecond;
 	}
 
 	void FlipLookDirection() {
@@ -207,6 +216,9 @@ public class ActorAngel : Actor_Base {
 
 		public void RecoilEnd() {
 			angel.velX = 0;
+		}
+
+		public void Attack() {
 		}
 	}
 }

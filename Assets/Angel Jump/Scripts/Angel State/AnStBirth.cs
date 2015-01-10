@@ -18,7 +18,7 @@ public class AnStBirth : AnSt_Base {
 		return true;
 	}
 
-	public override AnSt_Base GetNextJumperState () {
+	public override AnSt_Base GetNextAngelState () {
 		return AnStAscend.Instance;
 	}
 	

@@ -43,7 +43,7 @@ public class AnStCollision : AnSt_Base {
 		return isFinished;
 	}
 
-	public override AnSt_Base GetNextJumperState () {
+	public override AnSt_Base GetNextAngelState () {
 		return AnStAscend.Instance;
 	}
 

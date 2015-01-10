@@ -7,5 +7,5 @@ public abstract class AnSt_Base {
 	public virtual void Exit() {}
 
 	public virtual bool IsFinished() { return false;}
-	public virtual AnSt_Base GetNextJumperState() { return AnStMock.Instance;}
+	public virtual AnSt_Base GetNextAngelState() { return AnStMock.Instance;}
 }
