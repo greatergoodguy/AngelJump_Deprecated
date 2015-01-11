@@ -67,7 +67,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f33d5d2e5d94989969d094839fa3c5, type: 3}
+  m_Script: {fileID: 11500000, guid: ed21191c060434887acf61da7718f637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gravityUnitsPerSecondSquared: -6.05000019
@@ -88,7 +88,7 @@ MonoBehaviour:
   group: 0
   prefixBackup: -1
   observed: {fileID: 0}
-  synchronization: 3
+  synchronization: 1
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0

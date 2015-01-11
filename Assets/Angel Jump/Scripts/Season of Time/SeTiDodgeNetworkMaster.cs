@@ -23,7 +23,6 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 		PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(0, -2.9f, 0), Quaternion.identity, 0, null);
 
 		PhotonNetwork.Instantiate(ConstantResources.KID_1, new Vector3(0, 0, 0), Quaternion.identity, 0);
-		//PhotonNetwork.Instantiate(ConstantResources.KID_2, new Vector3(0, 0, 0), Quaternion.identity, 0);
 	}
 
 	public override void Update () {

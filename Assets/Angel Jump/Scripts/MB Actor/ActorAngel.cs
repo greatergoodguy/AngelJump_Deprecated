@@ -62,7 +62,7 @@ public class ActorAngel : Actor_Base {
 			UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)) {
+		if(Input.GetKeyDown(KeyCode.Space) && isControllable) {
 			SwitchToAngelState(AnStAttack.Instance);
 		}
 	}
@@ -120,7 +120,8 @@ public class ActorAngel : Actor_Base {
 			SwitchToAngelState(AnStJump.Instance);
 		}
 		else if(other.tag == ConstantTags.GROUND && angelState == AnStAttack.Instance) {
-			velY = bounceAttackSpeedUnitsPerSecond;
+			//velY = bounceAttackSpeedUnitsPerSecond;
+			handler.Jump();
 		}
 		else if(other.tag == ConstantTags.GROUND) {
 			Bounce();
@@ -219,6 +220,10 @@ public class ActorAngel : Actor_Base {
 		}
 
 		public void Attack() {
+		}
+
+		public void ShootAttackBlade() {
+
 		}
 	}
 }

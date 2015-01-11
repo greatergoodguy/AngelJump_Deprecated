@@ -24,10 +24,10 @@ public class ActorAttackBlade : Actor_Base {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if(other.tag == ConstantTags.KID) {
-			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();
-			kid.Injure();
-		}
+//		if(other.tag == ConstantTags.KID) {
+//			ActorJumperPhoton kid = other.GetComponent<ActorJumperPhoton>();
+//			kid.Injure();
+//		}
 
 		if(other.tag == ConstantTags.JUMPER) {
 			ActorAngel jumper = other.GetComponent<ActorAngel>();
