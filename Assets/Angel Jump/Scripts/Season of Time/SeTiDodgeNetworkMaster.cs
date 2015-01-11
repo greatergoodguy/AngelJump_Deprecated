@@ -22,7 +22,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(5.1f, 0, 0), Quaternion.identity, 0, null);
 		PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(0, -2.9f, 0), Quaternion.identity, 0, null);
 
-		PhotonNetwork.Instantiate(ConstantResources.KID_1, new Vector3(0, 0, 0), Quaternion.identity, 0);
+		GameObject goAngel = PhotonNetwork.Instantiate(ConstantResources.ANGEL, new Vector3(0, 0, 0), Quaternion.identity, 0);
 	}
 
 	public override void Update () {
@@ -32,7 +32,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 
 		if(elapsedTimeForObstacles >= 5.0f) {
 			elapsedTimeForObstacles = 0;
-			CreateObstacle();
+//			CreateObstacle();
 		}
 
 	}
@@ -42,7 +42,6 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 	}
 
 	private void CreateObstacle() {
-
 		CreateObstacle1();
 	}
 

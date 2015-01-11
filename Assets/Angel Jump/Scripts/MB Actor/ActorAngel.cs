@@ -3,7 +3,8 @@ using UnityEngine.Sprites;
 using System;
 using System.Collections;
 
-[RequireComponent (typeof (Animator))]
+//[RequireComponent (typeof (PhotonView))]
+//[RequireComponent (typeof (SyncLerp))]
 public class ActorAngel : Actor_Base {
 
 	public static readonly int ANIMATION_BIRTH 		= 0;
@@ -15,7 +16,7 @@ public class ActorAngel : Actor_Base {
 	public static readonly int ANIMATION_MOCK 		= -1;
 	
 	private static readonly string TAG = typeof(ActorAngel).Name;
-	
+
 	[Range(-10, 0)] public float gravityUnitsPerSecondSquared 		= -6.05f;
 	[Range(1, 10)] public float horizontalSpeedUnitsPerSecond 		= 5.52f;
 	[Range(1, 10)] public float jumpSpeedUnitsPerSecond 			= 6.82f;
@@ -23,10 +24,27 @@ public class ActorAngel : Actor_Base {
 	[Range(1, 10)] public float bounceAttackSpeedUnitsPerSecond 	= 5.82f;
 	[Range(1, 10)] public float recoilSpeedUnitsPerSecond 			= 2.82f;
 
+	public bool IsControllable {
+		get {
+			if(isOnline) {
+				return isControllableInput && photonView.isMine;
+			}
+			else {
+				return isControllableInput;
+			}
+		}
+	}
+
+	bool isOnline;
+
 	int points = 0;
 
 	float velX = 0;
 	float velY = 0;
+//	if(logMasterScriptClone != logMasterScript) {
+//		logMasterScriptClone = logMasterScript;
+//		UtilLogger.SetLoggableMasterScript(logMasterScript);
+//	}
 
 	bool isLookingRight = true;
 
@@ -34,7 +52,7 @@ public class ActorAngel : Actor_Base {
 	bool canMoveRight = true;
 
 	bool isGravityEnabled = false;
-	bool isControllable = false;
+	bool isControllableInput = false;
 
 	AnSt_Base angelState = AnStBirth.Instance;
 
@@ -43,13 +61,18 @@ public class ActorAngel : Actor_Base {
 	ActorAngelVisual angelVisual;
 	ActorAngelUI angelUI;
 
+	PhotonView photonView;
 	Animator animator;
+	SyncLerp syncLerp;
 
 	void Awake() {
 		angelVisual = transform.FindChild("Angel Visual").GetComponent<ActorAngelVisual>();
 		angelUI = transform.FindChild("Angel UI").GetComponent<ActorAngelUI>();
 
+		photonView = GetComponent<PhotonView>();
 		animator = angelVisual.GetComponent<Animator>();
+		syncLerp = GetComponent<SyncLerp>();
+
 	}
 
 	void Start () {
@@ -60,6 +83,9 @@ public class ActorAngel : Actor_Base {
 	}
 	
 	void Update () {
+
+		UtilLogger.Log(TAG, "Update() - photonView.isMine: " + photonView.isMine);
+
 		angelState.Update();
 		
 		if(angelState.IsFinished()) {
@@ -70,25 +96,25 @@ public class ActorAngel : Actor_Base {
 			UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space) && isControllable) {
+		if(Input.GetKeyDown(KeyCode.Space) && IsControllable) {
 			SwitchToAngelState(AnStAttack.Instance);
 		}
 	}
 	
-	void FixedUpdate () {
+	void FixedUpdate ()  {
 		velY = velY + Time.deltaTime * gravityUnitsPerSecondSquared;
 		
 		float deltaX = 0;
 		float deltaY = 0;
-
+		
 		if(isGravityEnabled) {
 			deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * gravityUnitsPerSecondSquared);
 		}
-
-		if(isControllable) {
-		float horizontalAxis = Input.GetAxis("Horizontal");
+		
+		if(IsControllable) {
+			float horizontalAxis = Input.GetAxis("Horizontal");
 			if(canMoveLeft) { 
-
+				
 				if(Input.GetKey(KeyCode.LeftArrow)) {
 					if(horizontalAxis > 0) {
 						horizontalAxis = 0;}
@@ -110,16 +136,15 @@ public class ActorAngel : Actor_Base {
 				}
 			}
 		}
-
+		
 		if(!canMoveLeft && velX < 0) {}
 		else if(!canMoveRight && velX > 0) {}
 		else {
 			deltaX += velX * Time.deltaTime;
 		}
-
-		if(deltaX != 0 || deltaY != 0) { 
+		
+		if(deltaX != 0 || deltaY != 0) {
 			transform.Translate(new Vector2(deltaX, deltaY));
-			//transform.position += new Vector3(deltaX, deltaY, 0);
 		}
 	}
 
@@ -187,6 +212,12 @@ public class ActorAngel : Actor_Base {
 		angelUI.ToggleOnOff();
 	}
 
+	public void SetOnline(bool isOnline) {
+		this.isOnline = isOnline;
+
+		syncLerp.enabled = isOnline;
+	}
+
 	public void FreezeMoveLeft() {
 		canMoveLeft = false;
 	}
@@ -218,8 +249,8 @@ public class ActorAngel : Actor_Base {
 			angel.isGravityEnabled = isGravityEnabled;
 		}
 
-		public void SetControllable(bool isControllable) {
-			angel.isControllable = isControllable;
+		public void SetControllableInput(bool isControllableInput) {
+			angel.isControllableInput = isControllableInput;
 		}
 
 		public void Jump() {

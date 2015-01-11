@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (Animator))]
 public class ActorAngelVisual : Actor_Base {
 
 	// Use this for initialization

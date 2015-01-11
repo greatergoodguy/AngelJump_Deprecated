@@ -9,7 +9,7 @@ public class AnStBirth : AnSt_Base {
 		base.Enter(handler);
 
 		handler.SetGravityEnabled(true);
-		handler.SetControllable(true);
+		handler.SetControllableInput(true);
 
 		handler.SetAnimation(ActorAngel.ANIMATION_BIRTH);
 	}

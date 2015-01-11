@@ -11,7 +11,7 @@ public class GodLogger : God_Base {
 	bool logMasterScriptClone;
 	bool logJumperClone;
 
-	void Start() {
+	void Awake() {
 		logMasterScriptClone = logMasterScript;
 		logJumperClone = logJumperClone;
 	}

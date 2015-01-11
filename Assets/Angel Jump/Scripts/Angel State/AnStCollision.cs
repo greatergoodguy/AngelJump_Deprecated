@@ -21,7 +21,7 @@ public class AnStCollision : AnSt_Base {
 		elapsedTime = 0;
 
 		handler.SetAnimation(ActorAngel.ANIMATION_COLLISION);
-		handler.SetControllable(false);
+		handler.SetControllableInput(false);
 		handler.RecoilBegin();
 	}
 
@@ -35,7 +35,7 @@ public class AnStCollision : AnSt_Base {
 
 	public override void Exit () {
 		base.Exit ();
-		handler.SetControllable(true);
+		handler.SetControllableInput(true);
 		handler.RecoilEnd();
 	}
 

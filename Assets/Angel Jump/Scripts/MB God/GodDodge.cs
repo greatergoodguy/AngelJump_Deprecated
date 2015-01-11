@@ -20,7 +20,7 @@ public class GodDodge : God_Base {
 	public ActorAngel Angel {
 		get {
 			if(angel == null) {
-				angel = transform.FindChild("Dodge World").Find("Angel").GetComponent<ActorAngel>();
+				angel = GetComponentInChildren<ActorAngel>();
 			}
 			
 			return angel;
@@ -42,5 +42,7 @@ public class GodDodge : God_Base {
 		foreach(Actor_Base actor in actors) {
 			actor.Reset();
 		}
+
+		Angel.SetOnline(false);
 	}
 }

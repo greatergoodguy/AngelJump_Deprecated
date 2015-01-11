@@ -5,7 +5,7 @@ using System.Reflection;
 
 public static class UtilLogger {
 
-	static bool logMasterScript = true;
+	static bool logMasterScript = false;
 	static bool logJumper = false;
 
 	public static void Log(string message) {
