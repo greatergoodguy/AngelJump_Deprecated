@@ -30,7 +30,9 @@ public abstract class Actor_Base : MonoBehaviour {
 		}
 	}
 
-	public virtual void Reset() {
-
+	public void Destroy() {
+		GameObject.Destroy(gameObject);
 	}
+
+	public virtual void Reset() {}
 }

@@ -6,6 +6,7 @@ public class ActorEmitter : MonoBehaviour {
 	public enum LaunchItem {
 		badiGhost,
 		attackBlade,
+		coinGold,
 		none
 	}
 	
@@ -16,6 +17,9 @@ public class ActorEmitter : MonoBehaviour {
 			break;
 		case LaunchItem.attackBlade:
 			goLaunchItem = (GameObject) Resources.Load("Attack Blade");
+			break;
+		case LaunchItem.coinGold:
+			goLaunchItem = (GameObject) Resources.Load("Coin Gold");
 			break;
 		case LaunchItem.none:
 			break;

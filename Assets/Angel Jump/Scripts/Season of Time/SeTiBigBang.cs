@@ -25,8 +25,8 @@ public class SeTiBigBang : SeTi_Base {
 			return SeTiDodgeNetwork.Instance;
 		}
 		else {
-			return SeTiMainMenu.Instance;
-			//return SeTiDodge.Instance;
+			//return SeTiMainMenu.Instance;
+			return SeTiDodge.Instance;
 		}
 	}
 

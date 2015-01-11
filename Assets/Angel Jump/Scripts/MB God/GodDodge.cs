@@ -16,8 +16,25 @@ public class GodDodge : God_Base {
 		}
 	}
 
+	ActorAngel angel;
+	public ActorAngel Angel {
+		get {
+			if(angel == null) {
+				angel = transform.FindChild("Dodge World").Find("Angel").GetComponent<ActorAngel>();
+			}
+			
+			return angel;
+		}
+	}
+
 	void Awake() {
 		PauseMenu.TurnOff();
+	}
+
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.T)) {
+			Angel.ToggleUI();
+		}
 	}
 
 	public void Reset() {

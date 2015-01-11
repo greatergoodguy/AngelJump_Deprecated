@@ -8,4 +8,5 @@ public static class ConstantTags {
 	public const string WALL	= "Wall";
 	public const string JUMPER 	= "Jumper";
 	public const string BADI_WHALE = "Badi Whale";
+	public const string COIN 	= "Coin";
 }

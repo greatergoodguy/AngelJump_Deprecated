@@ -15,10 +15,10 @@ public static class UtilLogger {
 	}
 	
 	public static void Log(string tag, string message) {
-		if(tag == "ActorDWJumper" && !logJumper) {
+		if(tag == typeof(ActorAngel).Name && !logJumper) {
 			return;}
 
-		if(tag == "_MasterScript" && !logMasterScript) {
+		if(tag == typeof(_MasterScript).Name && !logMasterScript) {
 			return;}
 
 		UnityEngine.Debug.Log (tag + ": " + message);

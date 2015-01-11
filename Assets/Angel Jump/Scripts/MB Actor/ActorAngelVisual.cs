@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Actor : MonoBehaviour {
+public class ActorAngelVisual : Actor_Base {
 
 	// Use this for initialization
 	void Start () {

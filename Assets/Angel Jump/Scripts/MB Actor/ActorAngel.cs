@@ -23,6 +23,8 @@ public class ActorAngel : Actor_Base {
 	[Range(1, 10)] public float bounceAttackSpeedUnitsPerSecond 	= 5.82f;
 	[Range(1, 10)] public float recoilSpeedUnitsPerSecond 			= 2.82f;
 
+	int points = 0;
+
 	float velX = 0;
 	float velY = 0;
 
@@ -38,10 +40,16 @@ public class ActorAngel : Actor_Base {
 
 	ActorAngel.Handler handler;
 
+	ActorAngelVisual angelVisual;
+	ActorAngelUI angelUI;
+
 	Animator animator;
 
 	void Awake() {
-		animator = GetComponent<Animator>();
+		angelVisual = transform.FindChild("Angel Visual").GetComponent<ActorAngelVisual>();
+		angelUI = transform.FindChild("Angel UI").GetComponent<ActorAngelUI>();
+
+		animator = angelVisual.GetComponent<Animator>();
 	}
 
 	void Start () {
@@ -126,6 +134,14 @@ public class ActorAngel : Actor_Base {
 		else if(other.tag == ConstantTags.GROUND) {
 			Bounce();
 		}
+		else if(other.tag == ConstantTags.COIN) {
+			points += 10;
+
+			ActorCoin coin = other.GetComponent<ActorCoin>();
+			coin.Destroy();
+
+			angelUI.UpdatePoints(points);
+		}
 		else if(other.tag == ConstantTags.BADI_WHALE) {
 			BadiWhale badiWhale = other.GetComponent<BadiWhale>();
 			badiWhale.Injure();
@@ -141,14 +157,23 @@ public class ActorAngel : Actor_Base {
 	void FlipLookDirection() {
 		isLookingRight = !isLookingRight;
 
-		Vector3 theScale = transform.localScale;
+		Vector3 theScale = angelVisual.transform.localScale;
 		theScale.x *= -1;
-		transform.localScale = theScale;
+		angelVisual.transform.localScale = theScale;
 	}
 
 	// ========================
 	// Public Methods
 	// ========================
+	public override void Reset() {
+		
+		AnSt_Base angelState = AnStBirth.Instance;
+		
+		transform.position = Vector3.zero;
+		velX = 0;
+		velY = 0;
+	}
+
 	public void SwitchToAngelState(AnSt_Base angelStateNew) {
 		angelState.Exit();
 		UtilLogger.Log(TAG, angelState.GetType().Name + ": Exit");
@@ -157,14 +182,9 @@ public class ActorAngel : Actor_Base {
 		angelState.Enter(handler);
 		UtilLogger.Log(TAG, angelState.GetType().Name + ": Enter");
 	}
-	
-	public override void Reset() {
 
-		AnSt_Base angelState = AnStBirth.Instance;
-
-		transform.position = Vector3.zero;
-		velX = 0;
-		velY = 0;
+	public void ToggleUI() {
+		angelUI.ToggleOnOff();
 	}
 
 	public void FreezeMoveLeft() {
