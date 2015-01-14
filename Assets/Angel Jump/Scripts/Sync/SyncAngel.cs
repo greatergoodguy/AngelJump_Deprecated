@@ -7,7 +7,12 @@ public class SyncAngel : Photon.MonoBehaviour
 	private Vector3 latestCorrectPos;
 	private Vector3 onUpdatePos;
 	private float fraction;
-	
+
+	private Vector3 angelVisualLatestCorrectPos;
+	private Vector3 angelVisualOnUpdate;
+
+	Transform tAngelVisual;
+
 	Animator animator;
 	int animation;
 
@@ -19,7 +24,8 @@ public class SyncAngel : Photon.MonoBehaviour
 		latestCorrectPos = transform.position;
 		onUpdatePos = transform.position;
 
-		animator = transform.FindChild("Angel Visual").GetComponent<Animator>();
+		tAngelVisual = transform.FindChild("Angel Visual");
+		animator = tAngelVisual.GetComponent<Animator>();
 	}
 	
 	/// <summary>
@@ -39,7 +45,7 @@ public class SyncAngel : Photon.MonoBehaviour
 		if (stream.isWriting)
 		{
 			Vector3 pos = transform.localPosition;
-			Quaternion rot = transform.localRotation;
+			Quaternion rot = tAngelVisual.localRotation;
 			stream.Serialize(ref pos);
 			stream.Serialize(ref rot);
 
@@ -58,7 +64,7 @@ public class SyncAngel : Photon.MonoBehaviour
 			onUpdatePos = transform.localPosition;  // we interpolate from here to latestCorrectPos
 			fraction = 0;                           // reset the fraction we alreay moved. see Update()
 			
-			transform.localRotation = rot;          // this sample doesn't smooth rotation
+			tAngelVisual.localRotation = rot;          // this sample doesn't smooth rotation
 
 			animation = (int) stream.ReceiveNext();
 		}
@@ -76,7 +82,7 @@ public class SyncAngel : Photon.MonoBehaviour
 		fraction = fraction + Time.deltaTime * 9;
 		transform.localPosition = Vector3.Lerp(onUpdatePos, latestCorrectPos, fraction);    // set our pos between A and B
 
-		animator.SetInteger("Animation", animation);
+
 	}
 }
 
