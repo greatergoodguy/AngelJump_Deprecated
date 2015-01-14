@@ -33,4 +33,5 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - TaggedPlayer
+  - SpawnEnvironment_RPC
   DisableAutoOpenWizard: 0

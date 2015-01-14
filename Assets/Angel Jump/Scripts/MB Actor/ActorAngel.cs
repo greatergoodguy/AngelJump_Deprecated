@@ -3,8 +3,8 @@ using UnityEngine.Sprites;
 using System;
 using System.Collections;
 
-//[RequireComponent (typeof (PhotonView))]
-//[RequireComponent (typeof (SyncLerp))]
+[RequireComponent (typeof (PhotonView))]
+[RequireComponent (typeof (SyncLerp))]
 public class ActorAngel : Actor_Base {
 
 	public static readonly int ANIMATION_BIRTH 		= 0;

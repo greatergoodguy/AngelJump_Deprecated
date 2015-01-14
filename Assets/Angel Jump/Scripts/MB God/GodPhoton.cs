@@ -6,7 +6,7 @@ public class GodPhoton : God_Base {
 
 	private static readonly string TAG = typeof(GodPhoton).Name;
 
-	private static readonly string ROOM_NAME = "Dodge All The Shit";
+	private static readonly string ROOM_NAME = "Angel Jump";
 
 	private bool isConnectedToPhoton = false;
 
