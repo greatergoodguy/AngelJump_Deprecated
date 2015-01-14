@@ -14,10 +14,11 @@ public class SyncAnimator : Photon.MonoBehaviour {
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
 	{
 		if (stream.isWriting) {
+			UtilLogger.Log("SyncAnimator", "OnPhotonSerializeView(): " + animator.GetInteger("Animation"));
 			stream.SendNext(animator.GetInteger("Animation"));
 		}
 		else {
-			animation = (int)stream.ReceiveNext();
+			animation = (int) stream.ReceiveNext();
 		}
 	}
 
