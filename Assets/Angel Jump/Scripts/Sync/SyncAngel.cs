@@ -75,6 +75,8 @@ public class SyncAngel : Photon.MonoBehaviour
 		
 		fraction = fraction + Time.deltaTime * 9;
 		transform.localPosition = Vector3.Lerp(onUpdatePos, latestCorrectPos, fraction);    // set our pos between A and B
+
+		animator.SetInteger("Animation", animation);
 	}
 }
 

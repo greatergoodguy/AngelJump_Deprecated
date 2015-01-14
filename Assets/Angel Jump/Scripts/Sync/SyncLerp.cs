@@ -8,9 +8,6 @@ public class SyncLerp : Photon.MonoBehaviour
 	private Vector3 onUpdatePos;
 	private float fraction;
 
-	Animator animator;
-	int animation;
-
 	public void Awake() {
 		if (photonView.isMine) {
 			this.enabled = false;   // due to this, Update() is not called on the owner client.
@@ -69,8 +66,6 @@ public class SyncLerp : Photon.MonoBehaviour
 		
 		fraction = fraction + Time.deltaTime * 9;
 		transform.localPosition = Vector3.Lerp(onUpdatePos, latestCorrectPos, fraction);    // set our pos between A and B
-
-		animator.SetInteger("Animation", animation);
 	}
 }
 
