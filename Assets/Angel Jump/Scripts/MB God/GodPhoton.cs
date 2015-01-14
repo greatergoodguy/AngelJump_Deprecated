@@ -24,7 +24,13 @@ public class GodPhoton : God_Base {
 	}
 
 	public void OnConnectedToPhoton() {
+		UtilLogger.Log(TAG, "OnConnectedToPhoton()");
 		isConnectedToPhoton = true;
+	}
+
+	public void OnFailedToConnectToPhoton() {
+		UtilLogger.Log(TAG, "OnFailedToConnectToPhoton()");
+		isConnectedToPhoton = false;
 	}
 
 	public void OnCreatedRoom() {
