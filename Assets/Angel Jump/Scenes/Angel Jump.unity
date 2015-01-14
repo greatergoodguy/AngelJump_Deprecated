@@ -503,7 +503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1210729409}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!81 &278701852
 AudioListener:
   m_ObjectHideFlags: 0
@@ -713,33 +713,6 @@ Prefab:
   m_RootGameObject: {fileID: 705748875}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &302663496
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 302663497}
-  m_Layer: 0
-  m_Name: Spawn Point Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &302663497
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 302663496}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88000011, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1210729409}
-  m_RootOrder: 0
 --- !u!1 &305225447
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +862,33 @@ Transform:
   - {fileID: 1942589477}
   - {fileID: 171888149}
   m_Father: {fileID: 1017830535}
+  m_RootOrder: 1
+--- !u!1 &411122740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411122741}
+  m_Layer: 0
+  m_Name: Dodge Network World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411122741
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411122740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1210729409}
   m_RootOrder: 1
 --- !u!1 &518960307
 GameObject:
@@ -1753,8 +1753,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 302663497}
   - {fileID: 278701851}
+  - {fileID: 411122741}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!114 &1210729410

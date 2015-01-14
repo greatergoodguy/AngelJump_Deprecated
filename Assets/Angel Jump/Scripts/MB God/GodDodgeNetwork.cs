@@ -3,13 +3,13 @@ using System.Collections;
 
 public class GodDodgeNetwork : God_Base {
 
-	// Use this for initialization
-	void Start () {
-	
+	Transform tDodgeNetworkWorld;
+
+	void Awake() {
+		tDodgeNetworkWorld = transform.FindChild("Dodge Network World");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public void AddToWorld(GameObject gameObject) {
+		gameObject.transform.parent = tDodgeNetworkWorld;
 	}
 }

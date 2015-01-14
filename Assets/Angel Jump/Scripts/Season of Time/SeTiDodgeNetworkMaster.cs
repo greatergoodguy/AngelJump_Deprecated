@@ -3,50 +3,29 @@ using System.Collections;
 
 public class SeTiDodgeNetworkMaster : SeTi_Base {
 
-	private static readonly string TAG = "SeTiDodgeNetworkMaster";
+	private static readonly string TAG = typeof(SeTiDodgeNetworkMaster).Name;
+
+	GodDodgeNetwork godDodgeNetwork = GuildOfMB.GodDodgeNetwork;
 
 	float elapsedTimeForObstacles = 0;
 
 	Transform transformSpawnPointLeft;
-
-	private SeTiDodgeNetworkMaster() {
-	}
 	
 	public override void Enter () {
 		base.Enter ();
 
 		transformSpawnPointLeft = GameObject.Find("Dodge Network").transform.FindChild("Spawn Point Left");
 
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.BACKGROUND, new Vector3(0, 0, 10), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(-5.12f, 0, 0), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(5.1f, 0, 0), Quaternion.identity, 0, null);
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(0, -2.9f, 0), Quaternion.identity, 0, null);
+		godDodgeNetwork.AddToWorld(PhotonNetwork.InstantiateSceneObject(ConstantResources.BACKGROUND, new Vector3(0, 0, 10), Quaternion.identity, 0, null));
+		godDodgeNetwork.AddToWorld(PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(-5.12f, 0, 0), Quaternion.identity, 0, null));
+		godDodgeNetwork.AddToWorld(PhotonNetwork.InstantiateSceneObject(ConstantResources.WALL, new Vector3(5.1f, 0, 0), Quaternion.identity, 0, null));
+		godDodgeNetwork.AddToWorld(PhotonNetwork.InstantiateSceneObject(ConstantResources.GROUND_LONG, new Vector3(0, -2.9f, 0), Quaternion.identity, 0, null));
 
-		GameObject goAngel = PhotonNetwork.Instantiate(ConstantResources.ANGEL, new Vector3(0, 0, 0), Quaternion.identity, 0);
-	}
-
-	public override void Update () {
-		base.Update (); 
-
-		elapsedTimeForObstacles += Time.deltaTime;
-
-		if(elapsedTimeForObstacles >= 5.0f) {
-			elapsedTimeForObstacles = 0;
-//			CreateObstacle();
-		}
-
+		godDodgeNetwork.AddToWorld(PhotonNetwork.Instantiate(ConstantResources.ANGEL, new Vector3(0, 0, 0), Quaternion.identity, 0));
 	}
 
 	public override void Exit () {
 		base.Exit ();
-	}
-
-	private void CreateObstacle() {
-		CreateObstacle1();
-	}
-
-	private void CreateObstacle1() {
-		PhotonNetwork.InstantiateSceneObject(ConstantResources.ATTACK_BLADE_PHOTON, transformSpawnPointLeft.position, Quaternion.identity, 0, null);
 	}
 
 	private static SeTiDodgeNetworkMaster instance;

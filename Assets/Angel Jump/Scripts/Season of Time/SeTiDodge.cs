@@ -5,16 +5,11 @@ public class SeTiDodge : SeTi_Base {
 
 	private static readonly string TAG = typeof(SeTiDodge).Name;
 
-	GodDodge godDodge;
-	GodMusic godMusic;
+	GodDodge godDodge = GuildOfMB.GodDodge;
+	GodMusic godMusic = GuildOfMB.GodMusic;
 
 	bool isPaused;
 	bool isFinished;
-
-	private SeTiDodge() {
-		godDodge = GuildOfMB.GodDodge;
-		godMusic = GuildOfMB.GodMusic;
-	}
 
 	public override void Enter () {
 		base.Enter ();
