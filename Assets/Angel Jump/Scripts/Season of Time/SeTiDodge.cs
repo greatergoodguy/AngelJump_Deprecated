@@ -27,8 +27,6 @@ public class SeTiDodge : SeTi_Base {
 		};
 
 		isFinished = false;
-
-		PhotonNetwork.offlineMode = true;
 	}
 
 	public override void Update () {

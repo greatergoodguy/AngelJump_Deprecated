@@ -2,12 +2,12 @@
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 [RequireComponent(typeof(PhotonView))]
-public class SyncLerp : Photon.MonoBehaviour
+public class SyncAngel : Photon.MonoBehaviour
 {
 	private Vector3 latestCorrectPos;
 	private Vector3 onUpdatePos;
 	private float fraction;
-
+	
 	Animator animator;
 	int animation;
 
@@ -18,6 +18,8 @@ public class SyncLerp : Photon.MonoBehaviour
 		
 		latestCorrectPos = transform.position;
 		onUpdatePos = transform.position;
+
+		animator = transform.FindChild("Angel Visual").GetComponent<Animator>();
 	}
 	
 	/// <summary>
@@ -40,6 +42,8 @@ public class SyncLerp : Photon.MonoBehaviour
 			Quaternion rot = transform.localRotation;
 			stream.Serialize(ref pos);
 			stream.Serialize(ref rot);
+
+			stream.SendNext(animator.GetInteger("Animation"));
 		}
 		else
 		{
@@ -55,6 +59,8 @@ public class SyncLerp : Photon.MonoBehaviour
 			fraction = 0;                           // reset the fraction we alreay moved. see Update()
 			
 			transform.localRotation = rot;          // this sample doesn't smooth rotation
+
+			animation = (int) stream.ReceiveNext();
 		}
 	}
 	
@@ -69,8 +75,6 @@ public class SyncLerp : Photon.MonoBehaviour
 		
 		fraction = fraction + Time.deltaTime * 9;
 		transform.localPosition = Vector3.Lerp(onUpdatePos, latestCorrectPos, fraction);    // set our pos between A and B
-
-		animator.SetInteger("Animation", animation);
 	}
 }
 

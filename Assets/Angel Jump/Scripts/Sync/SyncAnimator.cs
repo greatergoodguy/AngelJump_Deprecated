@@ -11,10 +11,8 @@ public class SyncAnimator : Photon.MonoBehaviour {
 		animator = GetComponent<Animator>();
 	}
 
-	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-	{
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
 		if (stream.isWriting) {
-			UtilLogger.Log("SyncAnimator", "OnPhotonSerializeView(): " + animator.GetInteger("Animation"));
 			stream.SendNext(animator.GetInteger("Animation"));
 		}
 		else {

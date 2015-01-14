@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 
 [RequireComponent (typeof (PhotonView))]
-[RequireComponent (typeof (SyncLerp))]
+[RequireComponent (typeof (SyncAngel))]
 public class ActorAngel : Actor_Base {
 
 	public static readonly int ANIMATION_BIRTH 		= 0;
@@ -32,6 +32,12 @@ public class ActorAngel : Actor_Base {
 			else {
 				return isControllableInput;
 			}
+		}
+	}
+
+	public bool IsOnlineButOwnerIsOther {
+		get {
+			return isOnline && !photonView.isMine;
 		}
 	}
 
@@ -63,7 +69,7 @@ public class ActorAngel : Actor_Base {
 
 	PhotonView photonView;
 	Animator animator;
-	SyncLerp syncLerp;
+	SyncAngel syncAngel;
 
 	void Awake() {
 		angelVisual = transform.FindChild("Angel Visual").GetComponent<ActorAngelVisual>();
@@ -71,7 +77,7 @@ public class ActorAngel : Actor_Base {
 
 		photonView = GetComponent<PhotonView>();
 		animator = angelVisual.GetComponent<Animator>();
-		syncLerp = GetComponent<SyncLerp>();
+		syncAngel = GetComponent<SyncAngel>();
 
 	}
 
@@ -83,6 +89,9 @@ public class ActorAngel : Actor_Base {
 	}
 	
 	void Update () {
+		if(IsOnlineButOwnerIsOther) {
+			return;
+		}
 
 		UtilLogger.Log(TAG, "Update() - photonView.isMine: " + photonView.isMine);
 
@@ -102,6 +111,10 @@ public class ActorAngel : Actor_Base {
 	}
 	
 	void FixedUpdate ()  {
+		if(IsOnlineButOwnerIsOther) {
+			return;
+		}
+
 		velY = velY + Time.deltaTime * gravityUnitsPerSecondSquared;
 		
 		float deltaX = 0;
@@ -215,7 +228,7 @@ public class ActorAngel : Actor_Base {
 	public void SetOnline(bool isOnline) {
 		this.isOnline = isOnline;
 
-		syncLerp.enabled = isOnline;
+		syncAngel.enabled = isOnline;
 	}
 
 	public void FreezeMoveLeft() {
