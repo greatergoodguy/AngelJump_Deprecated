@@ -13,10 +13,10 @@ public static class UtilLogger {
 	}
 	
 	public static void Log(string tag, string message) {
-		if(tag == typeof(ActorAngel).Name && logJumper) {
+		if(tag.StartsWith("AnSt") && logJumper) {
 			Log(tag + ": " + message);
 		}
-		else if(tag == typeof(_MasterScript).Name && logMasterScript) {
+		else if(tag.StartsWith(typeof(_MasterScript).Name) && logMasterScript) {
 			Log(tag + ": " + message);
 		}
 		else {
