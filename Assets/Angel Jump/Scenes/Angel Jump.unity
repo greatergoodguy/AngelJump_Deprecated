@@ -772,7 +772,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: f26d796655eab4750846d5a9663fc3e1, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f26d796655eab4750846d5a9663fc3e1, type: 2}
@@ -1286,7 +1286,6 @@ GameObject:
   - 50: {fileID: 705748880}
   - 114: {fileID: 705748878}
   - 114: {fileID: 705748881}
-  - 114: {fileID: 705748882}
   m_Layer: 0
   m_Name: Angel
   m_TagString: Jumper
@@ -1387,20 +1386,9 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 302352974}
   m_GameObject: {fileID: 705748875}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2d42275b987f4776a32113b4909ddfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &705748882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 705748875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c2fb960960d48f9aa9b886557efc26, type: 3}
+  m_Script: {fileID: 11500000, guid: b2d42275b987f4776a32113b4909ddfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &759998904

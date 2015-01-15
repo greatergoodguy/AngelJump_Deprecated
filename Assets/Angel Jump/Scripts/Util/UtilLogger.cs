@@ -9,19 +9,20 @@ public static class UtilLogger {
 	static bool logJumper = false;
 
 	public static void Log(string message) {
-		StackFrame frame = new StackFrame(1);
-		MethodBase method = frame.GetMethod();
-		Log(method.DeclaringType.FullName, message);
+		UnityEngine.Debug.Log (message);
 	}
 	
 	public static void Log(string tag, string message) {
-		if(tag == typeof(ActorAngel).Name && !logJumper) {
-			return;}
+		if(tag == typeof(ActorAngel).Name && logJumper) {
+			Log(tag + ": " + message);
+		}
+		else if(tag == typeof(_MasterScript).Name && logMasterScript) {
+			Log(tag + ": " + message);
+		}
+		else {
+			Log(tag + ": " + message);
+		}
 
-		if(tag == typeof(_MasterScript).Name && !logMasterScript) {
-			return;}
-
-		UnityEngine.Debug.Log (tag + ": " + message);
 	}
 
 	public static void SetLoggableMasterScript(bool isLoggable) {
