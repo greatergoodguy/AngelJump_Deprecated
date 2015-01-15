@@ -41,7 +41,7 @@ public class ActorAngel : Actor_Base {
 		}
 	}
 
-	bool isOnline;
+	public bool isOnline;
 
 	int points = 0;
 

@@ -1326,6 +1326,7 @@ MonoBehaviour:
   bounceCollisionSpeedUnitsPerSecond: 2.81999993
   bounceAttackSpeedUnitsPerSecond: 5.82000017
   recoilSpeedUnitsPerSecond: 2.81999993
+  isOnline: 0
 --- !u!114 &705748878
 MonoBehaviour:
   m_ObjectHideFlags: 0
