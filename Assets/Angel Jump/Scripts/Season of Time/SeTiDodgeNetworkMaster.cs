@@ -13,6 +13,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 	
 	public override void Enter () {
 		base.Enter ();
+		UtilLogger.Log(TAG, "Enter()");
 
 		transformSpawnPointLeft = GameObject.Find("Dodge Network").transform.FindChild("Spawn Point Left");
 
@@ -21,6 +22,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 	}
 
 	public override void Exit () {
+		UtilLogger.Log(TAG, "Exit()");
 		base.Exit ();
 	}
 
