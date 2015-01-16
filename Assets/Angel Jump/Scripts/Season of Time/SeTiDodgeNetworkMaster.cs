@@ -18,7 +18,7 @@ public class SeTiDodgeNetworkMaster : SeTi_Base {
 		transformSpawnPointLeft = GameObject.Find("Dodge Network").transform.FindChild("Spawn Point Left");
 
 		godDodgeNetwork.SpawnEnvironment();
-		godDodgeNetwork.AddToWorld(PhotonNetwork.Instantiate(ConstantResources.ANGEL, new Vector3(0, 0, 0), Quaternion.identity, 0));
+		PhotonNetwork.Instantiate(ConstantResources.ANGEL, new Vector3(0, 0, 0), Quaternion.identity, 0);
 	}
 
 	public override void Exit () {
