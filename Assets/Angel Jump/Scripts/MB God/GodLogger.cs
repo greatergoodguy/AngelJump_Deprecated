@@ -5,6 +5,7 @@ public class GodLogger : God_Base {
 
 	private static readonly string TAG = typeof(GodLogger).Name;
 
+	public bool logAll				= true;
 	public bool logMasterScript 	= false;
 	public bool logAngel 			= false;
 
