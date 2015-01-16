@@ -58,12 +58,14 @@ public class SyncAngel : Photon.MonoBehaviour
 			Vector3 scale = Vector3.zero;
 			stream.Serialize(ref pos);
 			stream.Serialize(ref rot);
+			stream.Serialize(ref scale);
 			
 			latestCorrectPos = pos;                 // save this to move towards it in FixedUpdate()
 			onUpdatePos = transform.localPosition;  // we interpolate from here to latestCorrectPos
 			fraction = 0;                           // reset the fraction we alreay moved. see Update()
 
 			transform.localRotation = rot;          // this sample doesn't smooth rotation
+			transform.localScale = scale;
 
 			animation = (int) stream.ReceiveNext();
 		}
