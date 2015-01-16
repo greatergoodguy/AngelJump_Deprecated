@@ -37,7 +37,7 @@ public class ActorAngel : Actor_Base {
 
 	public bool IsOnlineButOwnerIsOther {
 		get {
-			return isOnline && !photonView.isMine;
+			return !photonView.isMine;
 		}
 	}
 
