@@ -8,9 +8,6 @@ public class SyncAngel : Photon.MonoBehaviour
 	private Vector3 onUpdatePos;
 	private float fraction;
 
-	private Vector3 angelVisualLatestCorrectPos;
-	private Vector3 angelVisualOnUpdate;
-
 	Transform tAngelVisual;
 
 	Animator animator;
@@ -45,7 +42,7 @@ public class SyncAngel : Photon.MonoBehaviour
 		if (stream.isWriting)
 		{
 			Vector3 pos = transform.localPosition;
-			Quaternion rot = tAngelVisual.localRotation;
+			Quaternion rot = tAngelVisual.rotation;
 			stream.Serialize(ref pos);
 			stream.Serialize(ref rot);
 
@@ -63,8 +60,8 @@ public class SyncAngel : Photon.MonoBehaviour
 			latestCorrectPos = pos;                 // save this to move towards it in FixedUpdate()
 			onUpdatePos = transform.localPosition;  // we interpolate from here to latestCorrectPos
 			fraction = 0;                           // reset the fraction we alreay moved. see Update()
-			
-			tAngelVisual.localRotation = rot;          // this sample doesn't smooth rotation
+
+			tAngelVisual.rotation = rot;          // this sample doesn't smooth rotation
 
 			animation = (int) stream.ReceiveNext();
 		}
