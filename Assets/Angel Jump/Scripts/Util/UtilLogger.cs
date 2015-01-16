@@ -17,7 +17,7 @@ public static class UtilLogger {
 
 		if(tag.StartsWith(typeof(ActorAngel).Name) && !logAngel) {
 		}
-		if(tag.StartsWith(typeof(ActorAngel).Name)) {
+		else if(tag.StartsWith(typeof(ActorAngel).Name)) {
 			Log(tag + ": " + message);
 		}
 		else if(tag.StartsWith(typeof(_MasterScript).Name) && !logMasterScript) {
