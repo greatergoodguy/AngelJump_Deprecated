@@ -195,9 +195,13 @@ public class ActorAngel : Actor_Base {
 	void FlipLookDirection() {
 		isLookingRight = !isLookingRight;
 
-		Vector3 theScale = angelVisual.transform.localScale;
+//		Vector3 theScale = angelVisual.transform.localScale;
+//		theScale.x *= -1;
+//		angelVisual.transform.localScale = theScale;
+
+		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
-		angelVisual.transform.localScale = theScale;
+		transform.localScale = theScale;
 	}
 
 	// ========================
