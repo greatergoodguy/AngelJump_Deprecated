@@ -26,12 +26,13 @@ public class ActorAngel : Actor_Base {
 
 	public bool IsControllable {
 		get {
-			if(isOnline) {
-				return isControllableInput && photonView.isMine;
-			}
-			else {
-				return isControllableInput;
-			}
+			return isControllableInput && photonView.isMine;
+//			if(isOnline) {
+//				return isControllableInput && photonView.isMine;
+//			}
+//			else {
+//				return isControllableInput;
+//			}
 		}
 	}
 
@@ -40,8 +41,6 @@ public class ActorAngel : Actor_Base {
 			return !photonView.isMine;
 		}
 	}
-
-	public bool isOnline;
 
 	int points = 0;
 
@@ -65,7 +64,7 @@ public class ActorAngel : Actor_Base {
 	ActorAngel.Handler handler;
 
 	ActorAngelVisual angelVisual;
-	ActorAngelUI angelUI;
+//	ActorAngelUI angelUI;
 
 	PhotonView photonView;
 	Animator animator;
@@ -73,7 +72,7 @@ public class ActorAngel : Actor_Base {
 
 	void Awake() {
 		angelVisual = transform.FindChild("Angel Visual").GetComponent<ActorAngelVisual>();
-		angelUI = transform.FindChild("Angel UI").GetComponent<ActorAngelUI>();
+//		angelUI = transform.FindChild("Angel UI").GetComponent<ActorAngelUI>();
 
 		photonView = GetComponent<PhotonView>();
 		animator = angelVisual.GetComponent<Animator>();
@@ -179,7 +178,7 @@ public class ActorAngel : Actor_Base {
 			ActorCoin coin = other.GetComponent<ActorCoin>();
 			coin.Destroy();
 
-			angelUI.UpdatePoints(points);
+//			angelUI.UpdatePoints(points);
 		}
 		else if(other.tag == ConstantTags.BADI_WHALE) {
 			BadiWhale badiWhale = other.GetComponent<BadiWhale>();
@@ -223,13 +222,7 @@ public class ActorAngel : Actor_Base {
 	}
 
 	public void ToggleUI() {
-		angelUI.ToggleOnOff();
-	}
-
-	public void SetOnline(bool isOnline) {
-		this.isOnline = isOnline;
-
-		syncAngel.enabled = isOnline;
+//		angelUI.ToggleOnOff();
 	}
 
 	public void FreezeMoveLeft() {

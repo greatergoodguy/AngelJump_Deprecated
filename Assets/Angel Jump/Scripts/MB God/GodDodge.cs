@@ -42,7 +42,5 @@ public class GodDodge : God_Base {
 		foreach(Actor_Base actor in actors) {
 			actor.Reset();
 		}
-
-		Angel.SetOnline(false);
 	}
 }
