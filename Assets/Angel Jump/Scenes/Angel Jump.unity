@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8c26b27097540e687c376164528486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logAll: 1
   logMasterScript: 0
   logAngel: 0
 --- !u!4 &132657080

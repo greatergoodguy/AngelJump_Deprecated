@@ -17,12 +17,15 @@ public class GodLogger : God_Base {
 		logAllClone = logAll;
 		logMasterScriptClone = logMasterScript;
 		logAngelClone = logAngelClone;
+
+		UtilLogger.SetLoggableAll(logAll);
+		UtilLogger.SetLoggableMasterScript(logMasterScript);
+		UtilLogger.SetLoggableAngel(logAngel);
 	}
 
 	void Update() {
 		if(logAllClone != logAll) {
 			logAllClone = logAll;
-
 		}
 
 		if(logMasterScriptClone != logMasterScript) {
@@ -32,7 +35,7 @@ public class GodLogger : God_Base {
 
 		if(logAngelClone != logAngel) {
 			logAngelClone = logAngel;
-			UtilLogger.SetLoggableJumper(logAngel);
+			UtilLogger.SetLoggableAngel(logAngel);
 		}
 
 	}
