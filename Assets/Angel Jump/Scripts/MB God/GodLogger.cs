@@ -6,14 +6,14 @@ public class GodLogger : God_Base {
 	private static readonly string TAG = typeof(GodLogger).Name;
 
 	public bool logMasterScript 	= false;
-	public bool logJumper 			= false;
+	public bool logAngel 			= false;
 
 	bool logMasterScriptClone;
-	bool logJumperClone;
+	bool logAngelClone;
 
 	void Awake() {
 		logMasterScriptClone = logMasterScript;
-		logJumperClone = logJumperClone;
+		logAngelClone = logAngelClone;
 	}
 
 	void Update() {
@@ -22,9 +22,9 @@ public class GodLogger : God_Base {
 			UtilLogger.SetLoggableMasterScript(logMasterScript);
 		}
 
-		if(logJumperClone != logJumper) {
-			logJumperClone = logJumper;
-			UtilLogger.SetLoggableJumper(logJumper);
+		if(logAngelClone != logAngel) {
+			logAngelClone = logAngel;
+			UtilLogger.SetLoggableJumper(logAngel);
 		}
 
 	}

@@ -6,18 +6,17 @@ using System.Reflection;
 public static class UtilLogger {
 
 	static bool logMasterScript = false;
-	static bool logJumper = false;
+	static bool logAngel = false;
 
 	public static void Log(string message) {
 		UnityEngine.Debug.Log (message);
 	}
 	
 	public static void Log(string tag, string message) {
-		if(tag.StartsWith("AnSt") && logJumper) {
-			Log(tag + ": " + message);
+
+		if(tag.StartsWith(typeof(ActorAngel).Name) && !logAngel) {
 		}
-		else if(tag.StartsWith(typeof(_MasterScript).Name) && logMasterScript) {
-			Log(tag + ": " + message);
+		else if(tag.StartsWith(typeof(_MasterScript).Name) && !logMasterScript) {
 		}
 		else {
 			Log(tag + ": " + message);
@@ -30,7 +29,7 @@ public static class UtilLogger {
 	}
 
 	public static void SetLoggableJumper(bool isLoggable) {
-		logJumper = isLoggable;
+		logAngel = isLoggable;
 	}
 
 }
