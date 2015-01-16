@@ -12,7 +12,7 @@ public class SeTiDodgeNetworkClient : SeTi_Base {
 	public override void Enter () {
 		base.Enter ();
 
-		GameObject goKid = PhotonNetwork.Instantiate("Kid 2", new Vector3(0, 0, 0), Quaternion.identity, 0);
+//		GameObject goKid = PhotonNetwork.Instantiate("Kid 2", new Vector3(0, 0, 0), Quaternion.identity, 0);
 	}
 	
 	public override void Exit () {
