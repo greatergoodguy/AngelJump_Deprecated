@@ -27,12 +27,6 @@ public class ActorAngel : Actor_Base {
 	public bool IsControllable {
 		get {
 			return isControllableInput && photonView.isMine;
-//			if(isOnline) {
-//				return isControllableInput && photonView.isMine;
-//			}
-//			else {
-//				return isControllableInput;
-//			}
 		}
 	}
 
