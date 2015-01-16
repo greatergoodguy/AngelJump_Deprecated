@@ -93,7 +93,8 @@ public class ActorAngel : Actor_Base {
 			return;
 		}
 
-		UtilLogger.Log(TAG, "Update() - photonView.isMine: " + photonView.isMine);
+		UtilLogger.Log(TAG, "Update() - IsOnlineButOwnerIsOther: " + IsOnlineButOwnerIsOther);
+//		UtilLogger.Log(TAG, "Update() - photonView.isMine: " + photonView.isMine);
 
 		angelState.Update();
 		
