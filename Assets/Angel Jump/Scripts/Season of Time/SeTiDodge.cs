@@ -11,6 +11,8 @@ public class SeTiDodge : SeTi_Base {
 	bool isPaused;
 	bool isFinished;
 
+	GameObject goAngel;
+
 	public override void Enter () {
 		base.Enter ();
 
@@ -27,6 +29,12 @@ public class SeTiDodge : SeTi_Base {
 		};
 
 		isFinished = false;
+
+		Object oAngelCloner = Resources.Load(ConstantResources.ANGEL, typeof(GameObject));
+		goAngel = GameObject.Instantiate(oAngelCloner) as GameObject;
+
+//		SyncAngel syncAngel = goAngel.GetComponent<SyncAngel>();
+//		Object.Destroy(syncAngel);
 	}
 
 	public override void Update () {
@@ -55,6 +63,7 @@ public class SeTiDodge : SeTi_Base {
 
 		Time.timeScale = 1;
 
+		GameObject.Destroy(goAngel);
 		GuildOfMB.GodDodge.TurnOff();
 	}
 

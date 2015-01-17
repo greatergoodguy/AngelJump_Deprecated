@@ -14,7 +14,7 @@ public class SyncAngel : Photon.MonoBehaviour
 	int animation;
 
 	public void Awake() {
-		if (photonView.isMine) {
+		if (!PhotonNetwork.isNonMasterClientInRoom || photonView.isMine) {
 			this.enabled = false;   // due to this, Update() is not called on the owner client.
 		}
 		

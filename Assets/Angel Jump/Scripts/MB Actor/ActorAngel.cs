@@ -3,8 +3,6 @@ using UnityEngine.Sprites;
 using System;
 using System.Collections;
 
-[RequireComponent (typeof (PhotonView))]
-[RequireComponent (typeof (SyncAngel))]
 public class ActorAngel : Actor_Base {
 
 	public static readonly int ANIMATION_BIRTH 		= 0;
@@ -26,13 +24,13 @@ public class ActorAngel : Actor_Base {
 
 	public bool IsControllable {
 		get {
-			return isControllableInput && photonView.isMine;
+			return (isControllableInput && PhotonNetwork.isMasterClient) || (isControllableInput && !PhotonNetwork.isNonMasterClientInRoom);
 		}
 	}
 
 	public bool IsOnlineButOwnerIsOther {
 		get {
-			return !photonView.isMine;
+			return PhotonNetwork.isNonMasterClientInRoom;
 		}
 	}
 
@@ -40,18 +38,14 @@ public class ActorAngel : Actor_Base {
 
 	float velX = 0;
 	float velY = 0;
-//	if(logMasterScriptClone != logMasterScript) {
-//		logMasterScriptClone = logMasterScript;
-//		UtilLogger.SetLoggableMasterScript(logMasterScript);
-//	}
 
 	bool isLookingRight = true;
 
 	bool canMoveLeft = true;
 	bool canMoveRight = true;
 
-	bool isGravityEnabled = false;
-	bool isControllableInput = false;
+	bool isGravityEnabled = true;
+	bool isControllableInput = true;
 
 	AnSt_Base angelState = AnStBirth.Instance;
 
@@ -86,9 +80,6 @@ public class ActorAngel : Actor_Base {
 			return;
 		}
 
-		UtilLogger.Log(TAG, "Update() - IsOnlineButOwnerIsOther: " + IsOnlineButOwnerIsOther);
-//		UtilLogger.Log(TAG, "Update() - photonView.isMine: " + photonView.isMine);
-
 		angelState.Update();
 		
 		if(angelState.IsFinished()) {
@@ -117,7 +108,7 @@ public class ActorAngel : Actor_Base {
 		if(isGravityEnabled) {
 			deltaY = (float) (velY * Time.deltaTime + (1.0 / 2.0) * Time.deltaTime * Time.deltaTime * gravityUnitsPerSecondSquared);
 		}
-		
+
 		if(IsControllable) {
 			float horizontalAxis = Input.GetAxis("Horizontal");
 			if(canMoveLeft) { 

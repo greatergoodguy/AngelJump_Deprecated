@@ -7,10 +7,6 @@ public class AnStBirth : AnSt_Base {
 	
 	public override void Enter (ActorAngel.Handler handler) {
 		base.Enter(handler);
-
-		handler.SetGravityEnabled(true);
-		handler.SetControllableInput(true);
-
 		handler.SetAnimation(ActorAngel.ANIMATION_BIRTH);
 	}
 
