@@ -15,8 +15,8 @@ public class SyncAngel : Photon.MonoBehaviour
 
 	public void Awake() {
 		bool cond1 = !GodPhoton.isConnectedToPhoton;
-		bool cond2 = GodPhoton.isConnectedToPhoton && photonView.isMine;
-		bool cond3 = GodPhoton.isConnectedToPhoton && !PhotonNetwork.isNonMasterClientInRoom;
+		bool cond2 = GodPhoton.isConnectedToPhoton && !GodPhoton.isInRoom;
+		bool cond3 = GodPhoton.isConnectedToPhoton && GodPhoton.isInRoom && photonView.isMine;
 
 		if (cond1 || cond2 || cond3) {
 			this.enabled = false;   // due to this, Update() is not called on the owner client.
