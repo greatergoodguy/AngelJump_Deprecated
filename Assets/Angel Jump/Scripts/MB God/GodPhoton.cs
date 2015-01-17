@@ -7,19 +7,16 @@ public class GodPhoton : God_Base {
 	private static readonly string TAG = typeof(GodPhoton).Name;
 
 	private static readonly string ROOM_NAME = "Angel Jump";
+	
+	public static bool isConnectedToPhoton {
+		get; private set;
+	}
 
-	private bool isConnectedToPhoton = false;
-
-	// Use this for initialization
-	void Start () {
+	void Awake() {
 		PhotonNetwork.ConnectUsingSettings("v1.0");
 	}
 
 	public void StartOnlineGame() {
-		if(!isConnectedToPhoton) {
-			return;
-		}
-
 		PhotonNetwork.CreateRoom(ROOM_NAME);
 	}
 
