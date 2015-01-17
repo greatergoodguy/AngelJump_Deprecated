@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb022d372a88b43b9bc8822739f9d236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectOnAwake: 0
+  connectOnAwake: 1
 --- !u!1 &1328433522
 GameObject:
   m_ObjectHideFlags: 0
