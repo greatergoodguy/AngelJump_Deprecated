@@ -28,9 +28,10 @@ public class ActorAngel : Actor_Base {
 		}
 	}
 
-	public bool IsOnlineButOwnerIsOther {
+	public bool IsOnlineAndOwnerIsOther {
 		get {
-			return PhotonNetwork.isNonMasterClientInRoom;
+			bool cond1 = GodPhoton.isConnectedToPhoton && GodPhoton.isInRoom && !photonView.isMine;
+			return cond1;
 		}
 	}
 
@@ -76,7 +77,8 @@ public class ActorAngel : Actor_Base {
 	}
 	
 	void Update () {
-		if(IsOnlineButOwnerIsOther) {
+		if(!GodPhoton.isConnectedToPhoton) {}
+		if(IsOnlineAndOwnerIsOther) {
 			return;
 		}
 
@@ -96,7 +98,8 @@ public class ActorAngel : Actor_Base {
 	}
 	
 	void FixedUpdate ()  {
-		if(IsOnlineButOwnerIsOther) {
+		if(!GodPhoton.isConnectedToPhoton) {}
+		else if(IsOnlineAndOwnerIsOther) {
 			return;
 		}
 

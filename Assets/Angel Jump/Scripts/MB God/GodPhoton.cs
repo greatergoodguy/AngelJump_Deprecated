@@ -12,6 +12,10 @@ public class GodPhoton : God_Base {
 		get; private set;
 	}
 
+	public static bool isInRoom {
+		get; private set;
+	}
+
 	public bool connectOnAwake = true;
 
 	void Awake() {
@@ -23,6 +27,7 @@ public class GodPhoton : God_Base {
 		PhotonNetwork.CreateRoom(ROOM_NAME);
 	}
 
+	// ============================================================
 	public void OnConnectedToPhoton() {
 		UtilLogger.Log(TAG, "OnConnectedToPhoton()");
 		isConnectedToPhoton = true;
@@ -33,8 +38,10 @@ public class GodPhoton : God_Base {
 		isConnectedToPhoton = false;
 	}
 
+	// ============================================================
 	public void OnCreatedRoom() {
 		UtilLogger.Log(TAG, "OnCreatedRoom()");
+		isInRoom = true; 
 	}
 
 	public void OnPhotonCreateRoomFailed(object[] codeAndMsg) {
@@ -55,6 +62,7 @@ public class GodPhoton : God_Base {
 
 	public void OnJoinedRoom() {
 		UtilLogger.Log(TAG, "OnJoinedRoom()");
+		isInRoom = true;
 		actionRoomJoined();
 	}
 
@@ -72,5 +80,10 @@ public class GodPhoton : God_Base {
 		}
 	}
 
+	public void OnLeftRoom() {
+		isInRoom = false;
+	}
+
+	// ============================================================
 	public event Action actionRoomJoined = () => {};
 }
