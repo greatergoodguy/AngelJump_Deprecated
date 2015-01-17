@@ -24,9 +24,7 @@ public class ActorAngel : Actor_Base {
 
 	public bool IsControllable {
 		get {
-			bool cond1 = isControllableInput && GodPhoton.isConnectedToPhoton;
-
-			return (isControllableInput && PhotonNetwork.isMasterClient) || (isControllableInput && !PhotonNetwork.isNonMasterClientInRoom);
+			return (isControllableInput && photonView.isMine) || (isControllableInput && !PhotonNetwork.isNonMasterClientInRoom);
 		}
 	}
 

@@ -12,8 +12,11 @@ public class GodPhoton : God_Base {
 		get; private set;
 	}
 
+	public bool connectOnAwake = true;
+
 	void Awake() {
-		PhotonNetwork.ConnectUsingSettings("v1.0");
+		if(connectOnAwake) {
+			PhotonNetwork.ConnectUsingSettings("v1.0");}
 	}
 
 	public void StartOnlineGame() {
